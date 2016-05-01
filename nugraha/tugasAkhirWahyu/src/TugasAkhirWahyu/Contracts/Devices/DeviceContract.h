@@ -1,12 +1,12 @@
-#ifndef _DEVICECONTRACT_H_
-#define _DEVICECONTRACT_H_
-
-#include "../../Sensors/Sensor.h"
+#ifndef TUGASAKHIRWAHYU_CONTRACTS_DEVICES_DEVICECONTRACT_H_
+#define TUGASAKHIRWAHYU_CONTRACTS_DEVICES_DEVICECONTRACT_H_
+    
+#include "../../Contracts/Sensors/SensorContract.h"
 #include "DriverContract.h"
 
 namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace Devices {
 
-    using Nugraha::TugasAkhirWahyu::Sensors::Sensor;
+    using Nugraha::TugasAkhirWahyu::Contracts::Sensors::SensorContract;
 
     class DeviceContract {
 
@@ -15,7 +15,18 @@ namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace 
             int pin;
             char* name;
             bool isOn;
-            DriverContract* driver;
+
+            DeviceContract(SensorContract* sensor)
+            {
+                this->sensor = sensor;
+                this->isOn = false;
+                this->sensor = 0;
+                this->driver = 0;
+            }
+
+            virtual void autoOff();
+
+            virtual void autoOn();
 
             /**
              * Menghidupkan perangkat dan mengupdate state-nya.
@@ -23,8 +34,9 @@ namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace 
              */
             void turnOn()
             {
-                this->isOn = true;
-                driver->turnOn(this->pin);
+                if(driver->turnOn(this->pin)) {
+                    this->isOn = true;
+                }
             }
 
             /**
@@ -33,18 +45,20 @@ namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace 
              */
             void turnOff()
             {
-                this->isOn = false;
-                driver->turnOff(this->pin);
+                if(driver->turnOff(this->pin)) {
+                    this->isOn = false;
+                }
             }
 
-            void setSensor(Sensor* sensor)
+            void setSensor(SensorContract* sensor)
             {
                 this->sensor = sensor;
             }
 
 
         protected:
-            Sensor* sensor;
+            SensorContract* sensor;
+            DriverContract* driver;
     };
 }}}}
 

@@ -1,3 +1,9 @@
+/**
+ * TugasAkhirWahyu - Sebuah program Arduino untuk Home Automation.
+ * 
+ * @package TugasAkhirWahyu
+ * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
+ */
 #include "headers/bootstrap.h"
 
 void setup()
@@ -8,5 +14,5 @@ void setup()
 
 void loop()
 {
-
+    
 }
