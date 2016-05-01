@@ -1,7 +1,7 @@
 #ifndef TUGASAKHIRWAHYU_DEVICES_GENERICDEVICE_H_
 #define TUGASAKHIRWAHYU_DEVICES_GENERICDEVICE_H_
     
-#include "bootstrap.h"
+#include "Includes/bootstrap.h"
 #include "../Sensors/GenericSensor.h"
 
 namespace Nugraha { namespace TugasAkhirWahyu { namespace Devices {
