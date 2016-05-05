@@ -1,25 +1,13 @@
-#ifndef Nugraha_TugasAkhirWahyu_Devices_Driver
-#define Nugraha_TugasAkhirWahyu_Devices_Driver
-#include "../Contracts/Devices/DriverContract.h"
-
-
 namespace Nugraha { namespace TugasAkhirWahyu { namespace Devices { 
+using Nugraha::TugasAkhirWahyu::Contracts::Devices::DriverContract;
 
-    using Nugraha::TugasAkhirWahyu::Contracts::Devices::DriverContract;
-
-    class Driver: public DriverContract {
-    public:
-        bool turnOn(int pin) 
-        {
-            
-        }
-
-        bool turnOff(int pin) 
-        {
-            
-        }
-    };
+class Driver: public DriverContract 
+{
+protected:
+    
+public:
+    virtual bool turnOn(int pin);
+    virtual bool turnOff(int pin);
+};
 
 }}}
-
-#endif

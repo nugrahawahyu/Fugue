@@ -1,28 +1,27 @@
-#ifndef Nugraha_TugasAkhirWahyu_Devices_Device
-#define Nugraha_TugasAkhirWahyu_Devices_Device
-#include "Includes/bootstrap.h"
-#include "../Sensors/GenericSensor.h"
-
 namespace Nugraha { namespace TugasAkhirWahyu { namespace Devices {
-
 using Nugraha::TugasAkhirWahyu::Contracts::Devices::DeviceContract;
-using Nugraha::TugasAkhirWahyu::Contracts::Sensors::SensorContract;
-using Nugraha::TugasAkhirWahyu::Sensors::GenericSensor;
+using Nugraha::TugasAkhirWahyu::Sensors::Sensor;
 
-class Device: public DeviceContract {
+class Device: public DeviceContract 
+{
+protected:
+    Sensor* sensor;
+    Driver* driver;
+    
 public:
-
     int pin;
     char* name;
     bool isOn;
 
-    Device(int pin, SensorContract* sensor)
+    Device(int pin, Sensor* sensor)
     {
         this->sensor = sensor;
         this->isOn = false;
         this->sensor = 0;
         this->driver = 0;
     }
+
+    virtual void behavior();
 
     /**
      * Menghidupkan perangkat dan mengupdate state-nya.
@@ -46,22 +45,14 @@ public:
         }
     }
 
-    void setSensor(SensorContract* sensor)
+    void setSensor(Sensor* sensor)
     {
         this->sensor = sensor;
     }
 
-    void setDriver(DriverContract* driver)
+    void setDriver(Driver* driver)
     {
         this->driver = driver;
     }
-
-
-protected:
-    SensorContract* sensor;
-    DriverContract* driver;
 };
-
 }}} 
-#endif
-

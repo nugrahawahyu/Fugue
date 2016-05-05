@@ -1,8 +1,9 @@
-class Fluid {
+namespace Nugraha { namespace TugasAkhirWahyu { namespace Support { namespace Facades {
 
+class Fluid 
+{
 public:
-
-    static int baseArguments;
+    static int baseArg;
 
     /**
      * Menggabungkan semua string yang dimasukkan sebagai parameter.
@@ -11,19 +12,18 @@ public:
      */
     static char* concat(int n_args, ...)
     {
-        short int baseArgumentCount = 1;
+        short int baseArgumentCount = Fluid::baseArg;
         char* holder = NULL;
 
         va_list argumentList;
         va_start(argumentList, n_args);
 
         int totalCharacters = 0;
-        char* text;
-        char* semua[n_args - (baseArgumentCount)];
         short int count = 0;
 
         for(int i = baseArgumentCount + 1; i <= n_args; i++) {
-            text = va_arg(argumentList, char*);
+
+            char* text = va_arg(argumentList, char*);
             totalCharacters += strlen(text);
 
             char* tempText = new char[strlen(holder)+1];
@@ -33,13 +33,14 @@ public:
             holder = NULL;
 
             holder = new char[totalCharacters + 1];
+
             strcpy(holder, tempText);
             strcat(holder, text);
 
             delete tempText;
         }
-
         va_end(argumentList);
+
         return holder;
     }
 
@@ -56,5 +57,6 @@ public:
         stringText.toCharArray(*charArrayText, stringText.length()+1);
     }
 };
+}}}}
 
-int Fluid::baseArguments = 1;
+int Nugraha::TugasAkhirWahyu::Support::Facades::Fluid::baseArg = 1;

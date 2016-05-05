@@ -1,10 +1,7 @@
-#ifndef Nugraha_TugasAkhirWahyu_Foundation_App
-#define Nugraha_TugasAkhirWahyu_Foundation_App
-#include "BaseController.h"
-
 namespace Nugraha { namespace TugasAkhirWahyu { namespace Foundation {
 
-class App {
+class App 
+{
 public:
     BaseController* controller;
 
@@ -25,4 +22,3 @@ public:
 };
 
 }}}
-#endif

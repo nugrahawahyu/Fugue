@@ -1,13 +1,25 @@
-class Debug {
+namespace Nugraha { namespace TugasAkhirWahyu { namespace Support { namespace Facades {
 
+class Debug 
+{
 public:
     static bool isDebugMode;
+    static int lastFreeMemory;
 
     static void printFreeMemory()
     {
         if(Debug::isDebugMode) {
+            int currentFreeMemory = freeMemory();
             Serial.print(F("freeMemory()="));
-            Serial.println(freeMemory());
+            Serial.print(currentFreeMemory);
+
+            Serial.print(F(" ["));
+            if(currentFreeMemory > Debug::lastFreeMemory)
+                Serial.print(F("+"));
+            Serial.print(currentFreeMemory - Debug::lastFreeMemory);
+            Serial.println(F("]"));
+
+            Debug::lastFreeMemory = currentFreeMemory;
         }
     }
 
@@ -25,6 +37,13 @@ public:
         }
     }
 
+    static void println(int message)
+    {
+        if(Debug::isDebugMode) {
+            Serial.println(String(message));
+        }
+    }
+
     static void print(const __FlashStringHelper* message)
     {
         if(Debug::isDebugMode) {
@@ -38,6 +57,15 @@ public:
             Serial.print(message);
         }
     }
-};
 
-bool Debug::isDebugMode = true;
+    static void print(int message)
+    {
+        if(Debug::isDebugMode) {
+            Serial.print(String(message));
+        }
+    }
+};
+}}}}
+
+bool Nugraha::TugasAkhirWahyu::Support::Facades::Debug::isDebugMode = true;
+int Nugraha::TugasAkhirWahyu::Support::Facades::Debug::lastFreeMemory = 0;

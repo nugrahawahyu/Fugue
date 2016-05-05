@@ -6,14 +6,14 @@
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>               |
  * -----------------------------------------------------------------+
  */
-#include "bootstrap/Fugue.h"
+#include "Fugue.h"
 
 void setup()
 {
-    controller->setup();
+    controller.setup();
 }
 
 void loop()
 {
-    controller->loop();
+    controller.loop();
 }
