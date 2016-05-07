@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace Devices {
+namespace Nugraha { namespace Contracts { namespace Devices {
 
 class DriverContract 
 {
@@ -7,4 +7,4 @@ public:
     virtual bool turnOff(int pin)=0;
 };
 
-}}}}
+}}}

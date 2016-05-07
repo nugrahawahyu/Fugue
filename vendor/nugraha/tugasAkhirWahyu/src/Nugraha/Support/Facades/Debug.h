@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Support { namespace Facades {
+namespace Nugraha { namespace Support { namespace Facades {
 
 class Debug 
 {
@@ -65,6 +65,6 @@ public:
         }
     }
 };
-}}}}
-bool Nugraha::TugasAkhirWahyu::Support::Facades::Debug::isDebugMode = true;
-int Nugraha::TugasAkhirWahyu::Support::Facades::Debug::lastFreeMemory = 0;
+}}}
+bool Nugraha::Support::Facades::Debug::isDebugMode = true;
+int Nugraha::Support::Facades::Debug::lastFreeMemory = 0;

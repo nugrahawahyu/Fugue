@@ -1,6 +1,6 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Foundation {
-using Nugraha::TugasAkhirWahyu::Devices::Device;
-using Nugraha::TugasAkhirWahyu::Sensors::Sensor;
+namespace Nugraha { namespace Foundation {
+using Nugraha::Devices::Device;
+using Nugraha::Sensors::Sensor;
 
 class Board 
 {  
@@ -14,4 +14,4 @@ public:
     }
 };
 
-}}}
+}}

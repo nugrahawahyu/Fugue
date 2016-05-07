@@ -1,5 +1,5 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Sensors {
-using Nugraha::TugasAkhirWahyu::Contracts::Sensors::SensorContract;
+namespace Nugraha { namespace Sensors {
+using Nugraha::Contracts::Sensors::SensorContract;
 
 class Sensor : public SensorContract 
 {
@@ -25,4 +25,4 @@ public:
     virtual double readMeasurementValue();
 };
 
-}}}
+}}

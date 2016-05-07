@@ -1,5 +1,5 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Sensors {
-using Nugraha::TugasAkhirWahyu::Sensors::Driver;
+namespace Nugraha { namespace Sensors {
+using Nugraha::Sensors::Driver;
 
 class GenericDriver : public Driver
 {
@@ -12,4 +12,4 @@ public:
     }
 };
 
-}}}
+}}

@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace Devices {
+namespace Nugraha { namespace Contracts { namespace Devices {
 
 class DeviceContract 
 {
@@ -8,4 +8,4 @@ public:
     virtual void behavior()=0;
 };
 
-}}}}
+}}}

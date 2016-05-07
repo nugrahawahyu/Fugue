@@ -1,5 +1,5 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Devices { 
-using Nugraha::TugasAkhirWahyu::Contracts::Devices::DriverContract;
+namespace Nugraha { namespace Devices { 
+using Nugraha::Contracts::Devices::DriverContract;
 
 class Driver: public DriverContract 
 {
@@ -10,4 +10,4 @@ public:
     virtual bool turnOff(int pin);
 };
 
-}}}
+}}

@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Support { namespace Facades {
+namespace Nugraha { namespace Support { namespace Facades {
 
 class Fluid 
 {
@@ -57,6 +57,6 @@ public:
         stringText.toCharArray(*charArrayText, stringText.length()+1);
     }
 };
-}}}}
+}}}
 
-int Nugraha::TugasAkhirWahyu::Support::Facades::Fluid::baseArg = 1;
+int Nugraha::Support::Facades::Fluid::baseArg = 1;

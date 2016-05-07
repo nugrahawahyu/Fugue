@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Foundation {
+namespace Nugraha { namespace Foundation {
 
 class App 
 {
@@ -21,4 +21,4 @@ public:
     }
 };
 
-}}}
+}}

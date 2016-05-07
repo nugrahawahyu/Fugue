@@ -1,6 +1,6 @@
 namespace {
 using App::Controller;
-using Nugraha::TugasAkhirWahyu::Foundation::App;
+using Nugraha::Foundation::App;
 
 App controller = App(new Controller());
 

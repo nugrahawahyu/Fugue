@@ -1,6 +1,6 @@
 namespace App {
-using Nugraha::TugasAkhirWahyu::Foundation::BaseController;
-using Nugraha::TugasAkhirWahyu::Foundation::Board;
+using Nugraha::Foundation::BaseController;
+using Nugraha::Foundation::Board;
 
 class Controller : public BaseController
 {

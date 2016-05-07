@@ -1,6 +1,6 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Devices {
-using Nugraha::TugasAkhirWahyu::Contracts::Devices::DeviceContract;
-using Nugraha::TugasAkhirWahyu::Sensors::Sensor;
+namespace Nugraha { namespace Devices {
+using Nugraha::Contracts::Devices::DeviceContract;
+using Nugraha::Sensors::Sensor;
 
 class Device: public DeviceContract 
 {
@@ -55,4 +55,4 @@ public:
         this->driver = driver;
     }
 };
-}}} 
+}}

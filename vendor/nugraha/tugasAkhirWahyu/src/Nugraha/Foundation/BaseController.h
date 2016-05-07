@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Foundation {
+namespace Nugraha { namespace Foundation {
 
 class BaseController 
 {
@@ -7,4 +7,4 @@ public:
     virtual void loop();
 };
 
-}}}
+}}

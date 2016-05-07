@@ -1,4 +1,4 @@
-namespace Nugraha { namespace TugasAkhirWahyu { namespace Contracts { namespace Sensors {
+namespace Nugraha { namespace Contracts { namespace Sensors {
 
 class SensorContract 
 {
@@ -11,4 +11,4 @@ public:
     virtual double readMeasurementValue()=0;
 };
 
-}}}}
+}}}
