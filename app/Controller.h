@@ -2,25 +2,18 @@ namespace App {
 using Nugraha::TugasAkhirWahyu::Foundation::BaseController;
 using Nugraha::TugasAkhirWahyu::Foundation::Board;
 
-/**
- * Class untuk mengendalikan board Arduino.
- * 
- * @package TugasAkhirWahyu
- * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
- */
-class Controller : public BaseController 
+class Controller : public BaseController
 {
 protected:
-    Board* homeAutomation = new Board();
-
+    Board* homeAutomation = new Board(1);
+    
 public:
     /**
      * Inisialisasi board Arduino dan devices.
      */
     void setup()
     {
-        Serial.begin(9600);
-        Serial.println(F("~Fugue~"));
+        int a = 2;
     }
 
     /**
@@ -28,11 +21,12 @@ public:
      */
     void loop()
     {
+        char* hasil = Fluid::concat(4, "Hello ", "From Fugue!", " How are you?");
         Debug::printFreeMemory();
-        char* hasil = Fluid::concat(Fluid::baseArg+3, "Hello ", "From Fugue!", " How are you?");
-        Serial.println(hasil);
-        delete hasil;
+        Serial.println(strlen(hasil));
         delay(1000);
+
+        delete hasil;
     }
 };
 

@@ -66,6 +66,5 @@ public:
     }
 };
 }}}}
-
 bool Nugraha::TugasAkhirWahyu::Support::Facades::Debug::isDebugMode = true;
 int Nugraha::TugasAkhirWahyu::Support::Facades::Debug::lastFreeMemory = 0;

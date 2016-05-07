@@ -1,4 +1,7 @@
-using namespace Nugraha::TugasAkhirWahyu;
+namespace {
 using App::Controller;
+using Nugraha::TugasAkhirWahyu::Foundation::App;
 
-Foundation::App controller = Foundation::App(new Controller());
+App controller = App(new Controller());
+
+}
