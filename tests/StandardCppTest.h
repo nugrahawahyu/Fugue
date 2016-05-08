@@ -1,5 +1,5 @@
 namespace Tests { 
-using App::Boards::ArduinoMega;
+using App::Boards::Arduino;
 using Nugraha::Foundation::Application;
 using Nugraha::Foundation::BaseController;
 

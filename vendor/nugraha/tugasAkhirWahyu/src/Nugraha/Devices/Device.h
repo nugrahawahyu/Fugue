@@ -15,11 +15,11 @@ public:
     int pin;
     bool isOn = false;
 
-    Device(int pin, Driver* driver, Sensor* sensor)
+    Device(int pin, Sensor* sensor)
     {
         this->pin = pin;
-        this->driver = driver;
         this->sensor = sensor;
+        this->driver = new GenericDriver();
     }
 
     /**

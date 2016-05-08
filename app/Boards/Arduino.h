@@ -5,11 +5,11 @@ using Nugraha::Sensors::Sensor;
 using Nugraha::Foundation::Board;
 using Nugraha::Devices::Drivers::GenericDriver;
 
-class ArduinoMega : public virtual Board {
+class Arduino : public virtual Board {
 protected:
     void devices()
     {
-        devicesCollection.push_back(new Led(13,NULL,NULL));
+        devicesCollection.push_back(new Led(13,NULL));
     }
 
     void sensors()

@@ -3,22 +3,23 @@ using Nugraha::Sensors::Sensor;
 using Nugraha::Devices::Device;
 using Nugraha::Devices::Driver;
 
-class Led : public Device
+class Led : public virtual Device
 {
 public:
-    Led(int pin, Driver* driver, Sensor* sensor=NULL) : Device(pin, driver, sensor){}
+    Led(int pin, Sensor* sensor=NULL) : Device(pin, sensor){}
 
     void initialize()
     {
         pinMode(this->pin, OUTPUT);
+        Debug::println(this->pin);
     }
 
     void behavior()
     {
-        digitalWrite(this->pin, HIGH);
-        delay(1000);
-        digitalWrite(this->pin, LOW);
-        delay(1000);
+        this->turnOn();
+        delay(2000);
+        this->turnOff();
+        delay(2000);
     }
 
 };

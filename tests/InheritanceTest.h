@@ -1,6 +1,6 @@
 namespace Tests { 
 using App::Devices::Led;
-using App::Boards::ArduinoMega;
+using App::Boards::Arduino;
 using Nugraha::Devices::Device;
 using Nugraha::Foundation::Application;
 using Nugraha::Foundation::BaseController;
@@ -14,10 +14,6 @@ public:
     void setup()
     {
         devices.push_back(new Led(13, NULL, NULL));
-        devices.push_back(new Led(12, NULL, NULL));
-        devices.push_back(new Led(11, NULL, NULL));
-        devices.push_back(new Led(10, NULL, NULL));
-        devices.push_back(new Led(9, NULL, NULL));
 
         Debug::println(devices.size());
         printDevicesPin();

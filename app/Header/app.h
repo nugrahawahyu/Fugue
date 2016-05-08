@@ -1,5 +1,5 @@
 namespace App { namespace Devices { class Led; }}
-namespace App { namespace Boards { class ArduinoMega; }}
+namespace App { namespace Boards { class Arduino; }}
 
 #include "../Devices/Led.h"
-#include "../Boards/ArduinoMega.h"
+#include "../Boards/Arduino.h"

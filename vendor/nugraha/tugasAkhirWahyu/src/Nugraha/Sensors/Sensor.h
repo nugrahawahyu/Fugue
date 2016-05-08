@@ -18,13 +18,6 @@ public:
         this->name = name;
         this->driver = new GenericDriver();
     }
-
-    /**
-     * Mendapatkan hasil pembacaan sensor.
-     *
-     * @return int
-     */
-    virtual double readMeasurementValue();
 };
 
 }}

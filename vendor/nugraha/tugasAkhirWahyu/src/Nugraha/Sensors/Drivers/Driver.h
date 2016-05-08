@@ -6,7 +6,7 @@ class Driver : public DriverContract
 protected:
     
 public:
-    virtual void readMeasurementValue(int pin);
+
 };
 
 }}}

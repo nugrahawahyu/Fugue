@@ -6,28 +6,27 @@
  */
 #include "Fugue.h"
 using App::Devices::Led;
-using App::Boards::ArduinoMega;
+using App::Boards::Arduino;
 using Nugraha::Foundation::Application;
 using Nugraha::Foundation::BaseController;
 
 class Controller : public BaseController
 {
 protected:
-    ArduinoMega* homeAutomation;
+    Arduino* homeAutomation;
 
 public:
-    /** Inisialisasi board Arduino dan devices. */
     void setup()
     {
-        homeAutomation = new ArduinoMega();
+        Debug::isDebugMode = true;
+        homeAutomation = new Arduino();
         homeAutomation->initialize();
-        Debug::printFreeMemory();
     }
 
-    /** Fungsi yang terus dieksekusi selagi Arduino masih on. */
     void loop()
     {
         homeAutomation->automate();
+        Debug::printFreeMemory();
     }
 };
 
