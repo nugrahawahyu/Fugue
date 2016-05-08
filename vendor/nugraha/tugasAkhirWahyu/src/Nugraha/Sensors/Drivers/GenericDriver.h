@@ -1,5 +1,4 @@
-namespace Nugraha { namespace Sensors {
-using Nugraha::Sensors::Driver;
+namespace Nugraha { namespace Sensors { namespace Drivers {
 
 class GenericDriver : public Driver
 {
@@ -12,4 +11,4 @@ public:
     }
 };
 
-}}
+}}}

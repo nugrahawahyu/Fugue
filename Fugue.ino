@@ -5,18 +5,31 @@
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
  */
 #include "Fugue.h"
+using App::Devices::Led;
+using App::Boards::ArduinoMega;
+using Nugraha::Foundation::Application;
+using Nugraha::Foundation::BaseController;
 
-void setup()
+class Controller : public BaseController
 {
-    Debug::isDebugMode = true;
-    Serial.begin(9600);
-    Serial.println(F("+---------------------------------------------+"));
-    Serial.println(F("|                     Fugue                   |"));
-    Serial.println(F("+---------------------------------------------+"));
-    controller.setup();
-}
+protected:
+    ArduinoMega* homeAutomation;
 
-void loop()
-{ 
-    controller.loop(); 
-}
+public:
+    /** Inisialisasi board Arduino dan devices. */
+    void setup()
+    {
+        homeAutomation = new ArduinoMega();
+        homeAutomation->initialize();
+        Debug::printFreeMemory();
+    }
+
+    /** Fungsi yang terus dieksekusi selagi Arduino masih on. */
+    void loop()
+    {
+        homeAutomation->automate();
+    }
+};
+
+Application* controller = new Application(new Controller());
+#include "bootstrap/bootstrap.h"

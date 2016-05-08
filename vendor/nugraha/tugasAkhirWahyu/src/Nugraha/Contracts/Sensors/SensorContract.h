@@ -8,6 +8,7 @@ public:
      *
      * @return int
      */
+    virtual void initialize()=0;
     virtual double readMeasurementValue()=0;
 };
 

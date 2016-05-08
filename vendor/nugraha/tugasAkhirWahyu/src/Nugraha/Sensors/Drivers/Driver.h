@@ -1,4 +1,4 @@
-namespace Nugraha { namespace Sensors {
+namespace Nugraha { namespace Sensors { namespace Drivers { 
 using Nugraha::Contracts::Sensors::DriverContract;
 
 class Driver : public DriverContract 
@@ -9,4 +9,4 @@ public:
     virtual void readMeasurementValue(int pin);
 };
 
-}}
+}}}

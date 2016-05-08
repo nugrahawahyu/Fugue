@@ -1,8 +1,11 @@
 namespace Nugraha { namespace Devices {
-using Nugraha::Contracts::Devices::DeviceContract;
 using Nugraha::Sensors::Sensor;
+using Nugraha::Devices::Drivers::Driver;
+using Nugraha::Devices::Drivers::GenericDriver;
+using Nugraha::Contracts::Devices::DeviceContract;
 
-class Device: public DeviceContract 
+
+class Device : public virtual DeviceContract
 {
 protected:
     Sensor* sensor;
@@ -10,18 +13,14 @@ protected:
     
 public:
     int pin;
-    char* name;
-    bool isOn;
+    bool isOn = false;
 
-    Device(int pin, Sensor* sensor)
+    Device(int pin, Driver* driver, Sensor* sensor)
     {
+        this->pin = pin;
+        this->driver = driver;
         this->sensor = sensor;
-        this->isOn = false;
-        this->sensor = 0;
-        this->driver = 0;
     }
-
-    virtual void behavior();
 
     /**
      * Menghidupkan perangkat dan mengupdate state-nya.

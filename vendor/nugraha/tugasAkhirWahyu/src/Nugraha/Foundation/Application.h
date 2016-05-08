@@ -1,11 +1,11 @@
 namespace Nugraha { namespace Foundation {
 
-class App 
+class Application
 {
 public:
     BaseController* controller;
 
-    App(BaseController* controller)
+    Application(BaseController* controller)
     {
         this->controller = controller;
     }

@@ -1,17 +1,18 @@
 #include "tests.h"
-#include "../Fugue.h"
-using namespace Nugraha::TugasAkhirWahyu;
+using Nugraha::Foundation::Application;
+using namespace Tests;
 
-Foundation::App test = Foundation::App(0);
+Application* test = new Application(new InheritanceTest());
+
 
 void setup()
 {
     Serial.begin(9600);
-    Debug::println("Hello, this is a test.");
-    test.setup();
+    Debug::println(F("|#############[ TEST ]#############|"));
+    test->setup();
 }
 
 void loop()
 {
-    test.loop();
+    test->loop();
 }

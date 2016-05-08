@@ -1,7 +1,26 @@
-namespace {
-using App::Controller;
-using Nugraha::Foundation::App;
+#ifndef _bootstrap_h_
+#define _bootstrap_h_
 
-App controller = App(new Controller());
 
+void printBootMessage()
+{
+    Serial.println(F("+---------------------------------------------+"));
+    Serial.println(F("|                     Fugue                   |"));
+    Serial.println(F("+---------------------------------------------+"));   
 }
+
+void setup()
+{
+    Debug::isDebugMode = true;
+    Serial.begin(9600);
+    printBootMessage();
+    controller->setup();
+}
+
+void loop()
+{ 
+    controller->loop(); 
+}
+
+
+#endif
