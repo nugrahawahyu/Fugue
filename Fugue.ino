@@ -4,7 +4,7 @@
  * @package TugasAkhirWahyu
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
  */
-#include "Fugue.h"
+#include "Fugue.h"\
 using App::Devices::Led;
 using App::Boards::Arduino;
 using Nugraha::Foundation::Application;

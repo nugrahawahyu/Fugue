@@ -7,6 +7,8 @@ using Nugraha::Collections::Collection;
 class Board 
 {  
 protected:
+    Collection<Device*>* devicesCollection = new Vector<Device*>();
+    Collection<Sensor*>* sensorsCollection = new Vector<Sensor*>();
     Device* Default = NULL;
 
     virtual void devices()=0;
@@ -14,18 +16,14 @@ protected:
 
     void initializeDevicesAndSensors()
     {
-        for(int i=0; i<devicesCollection.size(); i++) {
-            if(devicesCollection[i] != NULL) {
-                devicesCollection[i]->initialize();
+        for(int i=0; i<devicesCollection->count(); i++) {
+            if(devicesCollection->getMemberAt(i) != NULL) {
+                devicesCollection->getMemberAt(i)->initialize();
             }
         }
     }
     
 public:
-    std::vector<Device*> devicesCollection;
-    std::vector<Sensor*> sensorsCollection;
-    Collection ayam;
-    
     void initialize()
     {
         devices();
@@ -35,16 +33,22 @@ public:
 
     void automate()
     {
-        for(int i=0; i<devicesCollection.size(); i++) {
-            if(devicesCollection[i] != NULL) {
-                devicesCollection[i]->behavior();
+        for(int i=0; i<devicesCollection->count(); i++) {
+            if(devicesCollection->getMemberAt(i) != NULL) {
+                devicesCollection->getMemberAt(i)->behavior();
             }
         }
     }
 
     void attachDevice(Device* device)
     {
-        devicesCollection.push_back(device);
+        devicesCollection->add(device);
+    }
+
+    ~Board()
+    {
+        delete devicesCollection;
+        delete sensorsCollection;
     }
 };
 

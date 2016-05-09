@@ -1,10 +1,13 @@
 namespace Nugraha { namespace Contracts { namespace Collections {
 
+template <class MembersType>
 class CollectionContract 
 {
 public:
-    virtual void add()=0;
+    virtual void add(MembersType newMember)=0;
     virtual void removeAt(int index)=0;
+    virtual int count()=0;
+    virtual MembersType getMemberAt(int index)=0;
 };
 
 }}}

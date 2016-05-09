@@ -4,7 +4,6 @@ using Nugraha::Devices::Drivers::Driver;
 using Nugraha::Devices::Drivers::GenericDriver;
 using Nugraha::Contracts::Devices::DeviceContract;
 
-
 class Device : public virtual DeviceContract
 {
 protected:
