@@ -1,5 +1,4 @@
-namespace App { namespace Devices { class Led; }}
-namespace App { namespace Boards { class Arduino; }}
-
+using Nugraha::Support::Facades::Debug;
+using Nugraha::Support::Facades::Fluid;
 #include "../Devices/Led.h"
 #include "../Boards/Arduino.h"

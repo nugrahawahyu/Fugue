@@ -2,7 +2,7 @@
 using Nugraha::Foundation::Application;
 using namespace Tests;
 
-Application* test = new Application(new InheritanceTest());
+Application* test = new Application(new TimerTest());
 
 
 void setup()

@@ -1,12 +1,11 @@
 namespace App { namespace Devices { 
 using Nugraha::Sensors::Sensor;
 using Nugraha::Devices::Device;
-using Nugraha::Devices::Driver;
 
 class Led : public virtual Device
 {
 public:
-    Led(int pin, Sensor* sensor=NULL) : Device(pin, sensor){}
+    Led(int pin, Sensor* sensor=NULL) : Device(pin, sensor) {}
 
     void initialize()
     {

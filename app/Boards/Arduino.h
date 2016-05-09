@@ -9,13 +9,47 @@ class Arduino : public virtual Board {
 protected:
     void devices()
     {
-        devicesCollection.push_back(new Led(13,NULL));
+        /** Pin 1 */
+        this->attachDevice(Default);
+
+        /** Pin 2 */
+        this->attachDevice(Default);
+
+        /** Pin 3 */
+        this->attachDevice(Default);
+
+        /** Pin 4 */
+        this->attachDevice(Default);
+
+        /** Pin 5 */
+        this->attachDevice(Default);
+
+        /** Pin 6 */
+        this->attachDevice(Default);
+
+        /** Pin 7 */
+        this->attachDevice(Default);
+
+        /** Pin 8 */
+        this->attachDevice(Default);
+
+        /** Pin 9 */
+        this->attachDevice(Default);
+
+        /** Pin 10 */
+        this->attachDevice(Default);
+
+        /** Pin 11 */
+        this->attachDevice(Default);
+
+        /** Pin 12 */
+        this->attachDevice(Default);
+
+        /** Pin 13 */
+        this->attachDevice(new Led(13, NULL));
     }
 
-    void sensors()
-    {
-
-    }
+    void sensors(){}
 };
 
 }}

@@ -26,7 +26,7 @@ public:
     void loop()
     {
         homeAutomation->automate();
-        Debug::printFreeMemory();
+        // Debug::printFreeMemory();
     }
 };
 

@@ -9,17 +9,17 @@ public:
     static void printFreeMemory()
     {
         if(Debug::isDebugMode) {
-            int currentFreeMemory = freeMemory();
-            Serial.print(F("freeMemory()="));
-            Serial.print(currentFreeMemory);
+            // int currentFreeMemory = freeMemory();
+            // Serial.print(F("freeMemory()="));
+            // Serial.print(currentFreeMemory);
 
-            Serial.print(F(" ["));
-            if(currentFreeMemory > Debug::lastFreeMemory)
-                Serial.print(F("+"));
-            Serial.print(currentFreeMemory - Debug::lastFreeMemory);
-            Serial.println(F("]"));
+            // Serial.print(F(" ["));
+            // if(currentFreeMemory > Debug::lastFreeMemory)
+            //     Serial.print(F("+"));
+            // Serial.print(currentFreeMemory - Debug::lastFreeMemory);
+            // Serial.println(F("]"));
 
-            Debug::lastFreeMemory = currentFreeMemory;
+            // Debug::lastFreeMemory = currentFreeMemory;
         }
     }
 
