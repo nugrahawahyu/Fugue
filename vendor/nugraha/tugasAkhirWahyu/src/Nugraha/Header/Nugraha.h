@@ -39,7 +39,8 @@
 
 /** Collections */
 #include "../Collections/Collection.h"
-#include "../Collections/Vector.h"
+#include "../Collections/SimpleVector.h"
+// #include "../Collections/Vector.h"
 
 /** Foundation */
 #include "../Foundation/Board.h"

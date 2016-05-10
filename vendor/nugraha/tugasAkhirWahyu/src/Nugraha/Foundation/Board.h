@@ -1,14 +1,17 @@
 namespace Nugraha { namespace Foundation {
 using Nugraha::Devices::Device;
 using Nugraha::Sensors::Sensor;
-using Nugraha::Collections::Vector;
+// using Nugraha::Collections::Vector;
+using Nugraha::Collections::SimpleVector;
 using Nugraha::Collections::Collection;
+
 
 class Board 
 {  
 protected:
-    Collection<Device*>* devicesCollection = new Vector<Device*>();
-    Collection<Sensor*>* sensorsCollection = new Vector<Sensor*>();
+    Collection<Device*>* devicesCollection = new SimpleVector<Device*>();
+    Collection<Sensor*>* sensorsCollection = new SimpleVector<Sensor*>();
+
     Device* Default = NULL;
 
     virtual void devices()=0;

@@ -2,9 +2,9 @@ namespace Nugraha { namespace Collections {
 using Nugraha::Collections::Collection;
 
 template <class MembersType>
-class Vector : public virtual Collection<MembersType> {
+class SimpleVector : public virtual Collection<MembersType> {
 protected:
-    std::vector<MembersType> members;
+    MembersType* members;
 
 public:
     /**
@@ -14,7 +14,6 @@ public:
      */
     int count()
     {
-        return members.size();
     }
 
     /**
@@ -25,7 +24,6 @@ public:
      */
     void add(MembersType newMember)
     {
-        members.push_back(newMember);
     }
 
     /**
