@@ -35,12 +35,13 @@
 /** Devices */
 #include "../Devices/Drivers/Driver.h"
 #include "../Devices/Drivers/GenericDriver.h"
+#include "../Devices/Drivers/SinkModeDriver.h"
 #include "../Devices/Device.h"
 
 /** Collections */
 #include "../Collections/Collection.h"
 #include "../Collections/SimpleVector.h"
-// #include "../Collections/Vector.h"
+#include "../Collections/Vector.h"
 
 /** Foundation */
 #include "../Foundation/Board.h"

@@ -4,31 +4,28 @@
  * @package TugasAkhirWahyu
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
  */
-#include "Fugue.h"\
+#include "Fugue.h"
+namespace Main {
 using App::Devices::Led;
-using App::Boards::Arduino;
-using Nugraha::Foundation::Application;
+using namespace App::Boards;
+using Nugraha::Foundation::Board;
 using Nugraha::Foundation::BaseController;
 
-class Controller : public BaseController
-{
-protected:
-    Arduino* homeAutomation;
 
+class Controller : public virtual BaseController
+{
 public:
     void setup()
     {
-        Debug::isDebugMode = true;
-        homeAutomation = new Arduino();
-        homeAutomation->initialize();
+        // Debug::isDebugMode = true;
+        board->initialize();
     }
 
     void loop()
     {
-        homeAutomation->automate();
-        Debug::printFreeMemory();
+        board->automate();
     }
 };
+}
 
-Application* controller = new Application(new Controller());
 #include "bootstrap/bootstrap.h"

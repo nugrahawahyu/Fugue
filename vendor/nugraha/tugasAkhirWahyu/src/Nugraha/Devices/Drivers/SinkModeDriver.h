@@ -1,18 +1,18 @@
 namespace Nugraha { namespace Devices { namespace Drivers { 
 
-class GenericDriver: public virtual Driver 
+class SinkModeDriver : public virtual Driver 
 {
 protected:
     
 public:
     bool turnOn(int pin)
     {
-        digitalWrite(pin, HIGH);
+        digitalWrite(pin, LOW);
         return true;
     }
     bool turnOff(int pin)
     {
-        digitalWrite(pin, LOW);
+        digitalWrite(pin, HIGH);
         return true;
     }
 };

@@ -3,8 +3,9 @@ namespace Nugraha { namespace Foundation {
 class BaseController 
 {
 public:
-    virtual void setup();
-    virtual void loop();
+    Board* board;
+    virtual void setup()=0;
+    virtual void loop()=0;
 };
 
 }}

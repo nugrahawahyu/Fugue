@@ -1,5 +1,6 @@
 namespace Nugraha { namespace Devices {
 using Nugraha::Sensors::Sensor;
+using Nugraha::Support::Facades::Debug;
 using Nugraha::Devices::Drivers::Driver;
 using Nugraha::Devices::Drivers::GenericDriver;
 using Nugraha::Contracts::Devices::DeviceContract;
@@ -13,12 +14,14 @@ protected:
 public:
     int pin;
     bool isOn = false;
+    unsigned long previousMillis = 0;
+    static Driver* defaultDriver;
 
     Device(int pin, Sensor* sensor)
     {
         this->pin = pin;
         this->sensor = sensor;
-        this->driver = new GenericDriver();
+        this->driver = Device::defaultDriver;
     }
 
     /**
@@ -29,6 +32,7 @@ public:
     {
         if(driver->turnOn(this->pin)) {
             this->isOn = true;
+            // Debug::println("Berhasil Dihidupkan");
         }
     }
 
@@ -40,6 +44,7 @@ public:
     {
         if(driver->turnOff(this->pin)) {
             this->isOn = false;
+            // Debug::println("Berhasil Dimatikan");
         }
     }
 

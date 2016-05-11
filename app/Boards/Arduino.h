@@ -1,5 +1,5 @@
 namespace App { namespace Boards { 
-using App::Devices::Led;
+using namespace App::Devices;
 using Nugraha::Devices::Device;
 using Nugraha::Sensors::Sensor;
 using Nugraha::Foundation::Board;
@@ -46,7 +46,7 @@ protected:
         this->attachDevice(Default);
 
         /** Pin 13 */
-        this->attachDevice(new Led(13, NULL));
+        this->attachDevice(new Led(D9, NULL));
     }
 
     void sensors(){}

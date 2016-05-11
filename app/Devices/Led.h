@@ -10,17 +10,10 @@ public:
     void initialize()
     {
         pinMode(this->pin, OUTPUT);
-        Debug::println(this->pin);
+        // Debug::println(this->pin);
     }
 
-    void behavior()
-    {
-        this->turnOn();
-        delay(2000);
-        this->turnOff();
-        delay(2000);
-    }
-
+    void behavior() {}
 };
 
 }}

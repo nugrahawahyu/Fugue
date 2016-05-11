@@ -1,29 +1,34 @@
 #ifndef _bootstrap_h_
 #define _bootstrap_h_
+using Nugraha::Foundation::Application;
+using namespace Main;
+using namespace Nugraha::Devices;
 
+#include "../config/config.h"
 
 void printBootMessage()
 {
-Serial.println(F(" _       __          __                                "));
-Serial.println(F("| |     / /  ___    / /  _____  ____    ____ ___   ___ "));
-Serial.println(F("| | /| / /  / _ \\  / /  / ___/ / __ \\  / __ `__ \\ / _ \\"));
-Serial.println(F("| |/ |/ /  /  __/ / /  / /__  / /_/ / / / / / / //  __/"));
-Serial.println(F("|__/|__/   \\___/ /_/   \\___/  \\____/ /_/ /_/ /_/ \\___/ "));
-Serial.println(F("                   --- MR. Wahyu ---                   "));                                                                                                 
+Serial.println((" _       __          __                                "));
+Serial.println(("| |     / /  ___    / /  _____  ____    ____ ___   ___ "));
+Serial.println(("| | /| / /  / _ \\  / /  / ___/ / __ \\  / __ `__ \\ / _ \\"));
+Serial.println(("| |/ |/ /  /  __/ / /  / /__  / /_/ / / / / / / //  __/"));
+Serial.println(("|__/|__/   \\___/ /_/   \\___/  \\____/ /_/ /_/ /_/ \\___/ "));
+Serial.println(("                   --- MR. Wahyu ---                   "));                                                                                                 
                                                                                                  
 }
 
 void setup()
 {
     Debug::isDebugMode = true;
-    Serial.begin(9600);
+    if(application->beginSerial)
+        Serial.begin(application->serialBaudRate);
     printBootMessage();
-    controller->setup();
+    application->setup();
 }
 
 void loop()
 { 
-    controller->loop(); 
+    application->loop(); 
 }
 
 
