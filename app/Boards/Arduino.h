@@ -9,6 +9,9 @@ class Arduino : public virtual Board {
 protected:
     void devices()
     {
+        /** Pin 0 */
+        this->attachDevice(Default);
+
         /** Pin 1 */
         this->attachDevice(Default);
 

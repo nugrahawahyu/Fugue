@@ -1,9 +1,9 @@
-namespace Tests { 
+namespace Tests { namespace TestCases { 
 using App::Boards::Arduino;
 using Nugraha::Foundation::Application;
 using Nugraha::Foundation::BaseController;
-class TimerTest;
-class TimerTest : public BaseController
+
+class TimerTest : public virtual BaseController
 {
 public:
     Timer t;
@@ -47,4 +47,4 @@ public:
 
 };
 
-}
+}}

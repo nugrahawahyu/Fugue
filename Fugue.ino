@@ -11,13 +11,12 @@ using namespace App::Boards;
 using Nugraha::Foundation::Board;
 using Nugraha::Foundation::BaseController;
 
-
 class Controller : public virtual BaseController
 {
 public:
     void setup()
     {
-        // Debug::isDebugMode = true;
+        Debug::isDebugMode = true;
         board->initialize();
     }
 
@@ -27,5 +26,4 @@ public:
     }
 };
 }
-
 #include "bootstrap/bootstrap.h"

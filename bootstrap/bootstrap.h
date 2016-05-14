@@ -8,12 +8,12 @@ using namespace Nugraha::Devices;
 
 void printBootMessage()
 {
-Serial.println((" _       __          __                                "));
-Serial.println(("| |     / /  ___    / /  _____  ____    ____ ___   ___ "));
-Serial.println(("| | /| / /  / _ \\  / /  / ___/ / __ \\  / __ `__ \\ / _ \\"));
-Serial.println(("| |/ |/ /  /  __/ / /  / /__  / /_/ / / / / / / //  __/"));
-Serial.println(("|__/|__/   \\___/ /_/   \\___/  \\____/ /_/ /_/ /_/ \\___/ "));
-Serial.println(("                   --- MR. Wahyu ---                   "));                                                                                                 
+Serial.println(F(" _       __          __                                "));
+Serial.println(F("| |     / /  ___    / /  _____  ____    ____ ___   ___ "));
+Serial.println(F("| | /| / /  / _ \\  / /  / ___/ / __ \\  / __ `__ \\ / _ \\"));
+Serial.println(F("| |/ |/ /  /  __/ / /  / /__  / /_/ / / / / / / //  __/"));
+Serial.println(F("|__/|__/   \\___/ /_/   \\___/  \\____/ /_/ /_/ /_/ \\___/ "));
+Serial.println(F("                   --- MR. Wahyu ---                   "));                                                                                                 
                                                                                                  
 }
 

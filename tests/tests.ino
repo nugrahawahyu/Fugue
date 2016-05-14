@@ -1,14 +1,14 @@
+#define SchedulerTest_h
 #include "tests.h"
+using namespace App::Boards;
+using namespace Tests::TestCases;
 using Nugraha::Foundation::Application;
-using namespace Tests;
 
-Application* test = new Application(new TimerTest());
-
+Application* test = new Application(new SchedulerTest(), new WemosD1(), 115200, true);
 
 void setup()
 {
-    Serial.begin(9600);
-    Debug::println(F("|#############[ TEST ]#############|"));
+    Serial.begin(test->serialBaudRate);
     test->setup();
 }
 

@@ -25,13 +25,13 @@ protected:
         }
     }
     
-public:
+public: 
     Board()
     {
         devicesCollection = new Vector<Device*>();
         sensorsCollection = new Vector<Sensor*>();
     }
-    
+
     void initialize()
     {
         devices();

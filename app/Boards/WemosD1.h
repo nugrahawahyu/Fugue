@@ -3,7 +3,6 @@ using namespace App::Devices;
 using Nugraha::Devices::Device;
 using Nugraha::Sensors::Sensor;
 using Nugraha::Foundation::Board;
-using Nugraha::Devices::Drivers::GenericDriver;
                 
 class WemosD1 : public virtual Board {
 protected:

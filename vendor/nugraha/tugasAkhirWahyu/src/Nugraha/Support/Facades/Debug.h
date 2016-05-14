@@ -8,27 +8,27 @@ public:
 
     static void printFreeMemory()
     {
-        // if(Debug::isDebugMode) {
-        //     int currentFreeMemory = freeMemory();
-        //     Serial.print(F("freeMemory()="));
-        //     Serial.print(currentFreeMemory);
+        if(Debug::isDebugMode) {
+            // int currentFreeMemory = freeMemory();
+            // Serial.print(F("freeMemory()="));
+            // Serial.print(currentFreeMemory);
 
-        //     Serial.print(F(" ["));
-        //     if(currentFreeMemory > Debug::lastFreeMemory)
-        //         Serial.print(F("+"));
-        //     Serial.print(currentFreeMemory - Debug::lastFreeMemory);
-        //     Serial.println(F("]"));
+            // Serial.print(F(" ["));
+            // if(currentFreeMemory > Debug::lastFreeMemory)
+            //     Serial.print(F("+"));
+            // Serial.print(currentFreeMemory - Debug::lastFreeMemory);
+            // Serial.println(F("]"));
 
-        //     Debug::lastFreeMemory = currentFreeMemory;
-        // }
+            // Debug::lastFreeMemory = currentFreeMemory;
+        }
     }
 
-    // static void println(const __FlashStringHelper* message)
-    // {
-    //     if(Debug::isDebugMode) {
-    //         Serial.println(message);
-    //     }
-    // }
+    static void println(const __FlashStringHelper* message)
+    {
+        if(Debug::isDebugMode) {
+            Serial.println(message);
+        }
+    }
 
     static void println(char* message)
     {
@@ -44,12 +44,12 @@ public:
         }
     }
 
-    // static void print(const __FlashStringHelper* message)
-    // {
-    //     if(Debug::isDebugMode) {
-    //         Serial.print(message);
-    //     }
-    // }
+    static void print(const __FlashStringHelper* message)
+    {
+        if(Debug::isDebugMode) {
+            Serial.print(message);
+        }
+    }
 
     static void print(char* message)
     {
