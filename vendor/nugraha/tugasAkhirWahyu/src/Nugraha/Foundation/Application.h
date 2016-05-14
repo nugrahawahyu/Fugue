@@ -1,4 +1,5 @@
 namespace Nugraha { namespace Foundation {
+using Nugraha::Contracts::Foundation::BoardContract;
 
 class Application
 {
@@ -7,7 +8,7 @@ public:
     int serialBaudRate;
     bool beginSerial;
 
-    Application(BaseController* controller, Board* board, int serialBaudRate, bool beginSerial)
+    Application(BaseController* controller, BoardContract* board, int serialBaudRate, bool beginSerial)
     {
         this->controller = controller;
         this->controller->board = board;

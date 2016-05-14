@@ -1,23 +1,31 @@
 namespace Nugraha { namespace Foundation {
-using Nugraha::Devices::Device;
-using Nugraha::Sensors::Sensor;
 using Nugraha::Collections::Vector;
 using Nugraha::Collections::Collection;
+using Nugraha::Contracts::Devices::DeviceContract;
+using Nugraha::Contracts::Sensors::SensorContract;
+using Nugraha::Contracts::Gateways::GatewayContract;
+using Nugraha::Contracts::Foundation::BoardContract;
 
 
-class Board 
+class Board : public virtual BoardContract
 {  
 protected:
-    Collection<Device*>* devicesCollection;
-    Collection<Sensor*>* sensorsCollection;
+    Collection<DeviceContract*>* devicesCollection;
+    Collection<SensorContract*>* sensorsCollection;
+    Collection<GatewayContract*>* gatewaysCollection;
 
-    Device* Default = NULL;
+    DeviceContract* Default = NULL;
 
-    virtual void devices()=0;
-    virtual void sensors()=0;
-
-    void initializeDevicesAndSensors()
+    void initializeAll()
     {
+        /** Inisialisasi setiap Gateway. */
+        for(int i=0; i<gatewaysCollection->count(); i++) {
+            if(gatewaysCollection->getMemberAt(i) != NULL) {
+                gatewaysCollection->getMemberAt(i)->initialize();
+            }
+        }
+
+        /** Inisialisasi setiap Device. */
         for(int i=0; i<devicesCollection->count(); i++) {
             if(devicesCollection->getMemberAt(i) != NULL) {
                 devicesCollection->getMemberAt(i)->initialize();
@@ -28,19 +36,29 @@ protected:
 public: 
     Board()
     {
-        devicesCollection = new Vector<Device*>();
-        sensorsCollection = new Vector<Sensor*>();
+        devicesCollection = new Vector<DeviceContract*>();
+        sensorsCollection = new Vector<SensorContract*>();
+        gatewaysCollection = new Vector<GatewayContract*>();
     }
 
     void initialize()
     {
-        devices();
         sensors();
-        initializeDevicesAndSensors();
+        devices();
+        gateways();
+        initializeAll();
     }
 
     void automate()
     {
+        /** Jalankan service setiap Gateway. */
+        for(int i=0; i<gatewaysCollection->count(); i++) {
+            if(gatewaysCollection->getMemberAt(i) != NULL) {
+                gatewaysCollection->getMemberAt(i)->service();
+            }
+        }
+
+        /** Jalankan behavior setiap Device. */
         for(int i=0; i<devicesCollection->count(); i++) {
             if(devicesCollection->getMemberAt(i) != NULL) {
                 devicesCollection->getMemberAt(i)->behavior();
@@ -48,11 +66,20 @@ public:
         }
     }
 
-    void attachDevice(Device* device)
+    void attachDevice(DeviceContract* device)
     {
         devicesCollection->add(device);
     }
 
+    void attachSensor(SensorContract* sensor)
+    {
+        sensorsCollection->add(sensor);
+    }
+
+    void attachGateway(GatewayContract* gateway)
+    {
+        gatewaysCollection->add(gateway);
+    }
     ~Board()
     {
         delete devicesCollection;

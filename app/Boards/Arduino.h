@@ -7,6 +7,12 @@ using Nugraha::Devices::Drivers::GenericDriver;
 
 class Arduino : public virtual Board {
 protected:
+    
+    void gateways()
+    {
+
+    }
+
     void devices()
     {
         /** Pin 0 */

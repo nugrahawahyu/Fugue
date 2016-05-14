@@ -1,11 +1,18 @@
 namespace App { namespace Boards { 
 using namespace App::Devices;
+using namespace App::Gateways;
 using Nugraha::Devices::Device;
 using Nugraha::Sensors::Sensor;
 using Nugraha::Foundation::Board;
                 
 class WemosD1 : public virtual Board {
 protected:
+
+    void gateways()
+    {
+        
+    }
+
     /**
      * Pins:
      * D0  - RX 
@@ -30,7 +37,10 @@ protected:
         this->attachDevice(new BlinkingLed(D9, NULL, 2000));
     }
 
-    void sensors(){}
+    void sensors()
+    {
+
+    }
 };
 
 }}

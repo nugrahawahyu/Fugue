@@ -10,7 +10,6 @@ public:
     void initialize()
     {
         pinMode(this->pin, OUTPUT);
-        // Debug::println(this->pin);
     }
 
     void behavior()

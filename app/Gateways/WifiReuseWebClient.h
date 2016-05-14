@@ -1,7 +1,7 @@
 namespace App { namespace Gateways {
-using Nugraha::Gateways::Gateway;
+using Nugraha::Gateways::WifiGateway;
 
-class WifiReuseWebClient : public virtual Gateway
+class WifiReuseWebClient : public virtual WifiGateway
 {
 protected:
     ESP8266WiFiMulti WiFiMulti;
@@ -28,7 +28,7 @@ public:
         http.setReuse(true);
     }
 
-    void runService()
+    void service()
     {
         unsigned long currentMillis = millis();
         if(currentMillis - previousMillis >= interval) {

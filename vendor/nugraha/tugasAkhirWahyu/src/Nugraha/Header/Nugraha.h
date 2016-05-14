@@ -24,6 +24,7 @@
 #include "../Contracts/Devices/DriverContract.h"
 #include "../Contracts/Devices/DeviceContract.h"
 #include "../Contracts/Collections/CollectionContract.h"
+#include "../Contracts/Foundation/BoardContract.h"
 
 /** Collections */
 #include "../Collections/Collection.h"
@@ -39,7 +40,7 @@
 #include "../Support/Facades/Scheduler/Scheduler.h"
 
 /** Gateways */
-#include "../Gateways/Gateway.h"
+#include "../Gateways/WifiGateway.h"
 
 /** Sensors */
 #include "../Sensors/Drivers/Driver.h"
