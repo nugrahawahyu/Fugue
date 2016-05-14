@@ -36,7 +36,7 @@ protected:
         this->attachDevice(Default);
 
         /** D9  - IO, Pull-up, BUILTIN_LED */
-        this->attachDevice(new Led(D9, NULL));
+        this->attachDevice(new BlinkingLed(D9, NULL, 2000));
 
         /** D10 - IO, Pull-down,SS */
         this->attachDevice(Default);

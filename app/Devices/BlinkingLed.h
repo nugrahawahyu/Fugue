@@ -12,20 +12,13 @@ public:
         this->interval = interval;
     }
 
+    /**
+     * Gunakan facades Scheduler untuk menjadwalkan perilaku dari
+     * perangkat.
+     */
     void behavior()
     {
-        unsigned long currentMillis = millis();
-        if(currentMillis - previousMillis >= interval) {
-            previousMillis = currentMillis;
-            if (this->isOn==false) {
-                Debug::println("Hidupkan");
-                this->turnOn();
-            }
-            else {
-                Debug::println("Matikan");
-                this->turnOff();
-            }
-        }
+        Scheduler::every(interval, this, &BlinkingLed::toggle);
     }
 };
 

@@ -25,6 +25,22 @@ public:
     }
 
     /**
+     * Jika perangkat sedang hidup maka matikan,
+     * jika perangkat sedang mati maka hidupkan.
+     */
+    void toggle()
+    {
+        if (this->isOn==false) {
+            Debug::println("Hidupkan");
+            this->turnOn();
+        }
+        else {
+            Debug::println("Matikan");
+            this->turnOff();
+        }
+    }
+
+    /**
      * Menghidupkan perangkat dan mengupdate state-nya.
      * @param  Device $device
      */

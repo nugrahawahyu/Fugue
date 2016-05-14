@@ -17,7 +17,7 @@ public:
      * @param callback reference - reference fungsi static.
      */
     template<typename Callback>
-    static void every(int interval, Callback callback, int repeatCount = -1)
+    static void every(unsigned long interval, Callback callback, int repeatCount = -1)
     {
         EventCollection->add(new StaticEvent<Callback>(interval, callback));
     }
@@ -31,7 +31,7 @@ public:
      * @param reference callback - reference fungsi static.
      */
     template<typename Callback, typename ObjectType>
-    static void every(int interval, ObjectType object, Callback callback, int repeatCount = -1)
+    static void every(unsigned long interval, ObjectType object, Callback callback, int repeatCount = -1)
     {
         EventCollection->add(new Event<Callback, ObjectType>(interval, callback, object));
     }
