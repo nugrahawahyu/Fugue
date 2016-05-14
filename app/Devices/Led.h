@@ -13,7 +13,10 @@ public:
         // Debug::println(this->pin);
     }
 
-    void behavior() {}
+    void behavior()
+    {
+        Debug::println("Hello this is LED parent!");
+    }
 };
 
 }}

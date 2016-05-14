@@ -1,4 +1,5 @@
-namespace Nugraha { namespace Devices {
+namespace App { namespace Gateways {
+using Nugraha::Gateways::Gateway;
 
 class WifiReuseWebClient : public virtual Gateway
 {

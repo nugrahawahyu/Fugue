@@ -18,6 +18,7 @@
 
 /** Contracts */
 #include "../Contracts/Support/Facades/Scheduler/EventContract.h"
+#include "../Contracts/Gateways/GatewayContract.h"
 #include "../Contracts/Sensors/DriverContract.h"
 #include "../Contracts/Sensors/SensorContract.h"
 #include "../Contracts/Devices/DriverContract.h"
@@ -36,6 +37,9 @@
 #include "../Support/Facades/Scheduler/Event.h"
 #include "../Support/Facades/Scheduler/StaticEvent.h"
 #include "../Support/Facades/Scheduler/Scheduler.h"
+
+/** Gateways */
+#include "../Gateways/Gateway.h"
 
 /** Sensors */
 #include "../Sensors/Drivers/Driver.h"

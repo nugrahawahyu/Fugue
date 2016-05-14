@@ -7,6 +7,7 @@
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
 #include <vector>
+#include <map>
 
 /** External libraries */
 #include <ArduinoJson.h>

@@ -5,3 +5,4 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 #include "../Devices/BlinkingLed.h"
 #include "../Boards/Arduino.h"
 #include "../Boards/WemosD1.h"
+#include "../Gateways/WifiReuseWebClient.h"

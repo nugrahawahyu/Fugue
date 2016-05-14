@@ -1,5 +1,5 @@
-namespace Nugraha { namespace Devices {
-using Nugraha::Contracts::Devices::GatewayContract;
+namespace Nugraha { namespace Gateways {
+using Nugraha::Contracts::Gateways::GatewayContract;
 
 class Gateway : public virtual GatewayContract
 {

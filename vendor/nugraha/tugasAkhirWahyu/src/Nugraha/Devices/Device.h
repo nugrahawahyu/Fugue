@@ -12,7 +12,7 @@ protected:
     Driver* driver;
     
 public:
-    int pin;
+    int pin = -1;
     bool isOn = false;
     unsigned long previousMillis = 0;
     static Driver* defaultDriver;
@@ -46,9 +46,10 @@ public:
      */
     void turnOn()
     {
-        if(driver->turnOn(this->pin)) {
-            this->isOn = true;
-            // Debug::println("Berhasil Dihidupkan");
+        if(this->pin != -1) {
+            if(driver->turnOn(this->pin)) {
+                this->isOn = true;
+            }
         }
     }
 
@@ -58,9 +59,10 @@ public:
      */
     void turnOff()
     {
-        if(driver->turnOff(this->pin)) {
-            this->isOn = false;
-            // Debug::println("Berhasil Dimatikan");
+        if(this->pin != -1) {
+            if(driver->turnOff(this->pin)) {
+                this->isOn = false;
+            }
         }
     }
 
