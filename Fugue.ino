@@ -18,11 +18,12 @@ public:
     {
         Debug::isDebugMode = true;
         board->initialize();
+        board->automate();
     }
 
     void loop()
     {
-        board->automate();
+        Scheduler::update();
     }
 };
 }

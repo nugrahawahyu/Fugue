@@ -11,16 +11,25 @@ using Nugraha::Foundation::Application;
 using Nugraha::Foundation::BaseController;
 using Nugraha::Support::Facades::Scheduler::Scheduler;
 
-class SchedulerTest;
+class InduokAyam
+{
+public:
+    void kokok()
+    {
+        Serial.println("Kukuruyuuuk...");
+    } 
+};
 
 class SchedulerTest : public virtual BaseController
 {
 public:
     void setup() 
     {
+        InduokAyam induokAyam;
         Serial.println(F("### SCHEDULER TEST ###"));
-        Scheduler::every(2000, this, &SchedulerTest::kambing);
-        Scheduler::every(2000, ayam);
+        Scheduler::every(800, this, &SchedulerTest::kambing);
+        Scheduler::every(1337, &induokAyam, &InduokAyam::kokok);
+        Scheduler::every(1650, ayam);
     }
 
     void loop()

@@ -1,18 +1,14 @@
 namespace Nugraha { namespace Support { namespace Facades { namespace Scheduler {
 
-class Foo{};
-template<class Callback, class ObjectType = Foo*>
+template<class Callback, class ObjectType>
 class Event : public virtual BaseEvent
 {
 protected:
-    int executionCount = 0;
-    unsigned long interval;
-    unsigned long previousMillis = millis();
     Callback callback;
-    ObjectType object = NULL;
+    ObjectType object;
 
 public:
-    Event(unsigned long interval, Callback callback, ObjectType object = NULL)
+    Event(unsigned long interval, Callback callback, ObjectType object)
     {
         this->interval = interval;
         this->callback = callback;
@@ -22,14 +18,6 @@ public:
     void executeCallback()
     {
        ((this->object)->*(this->callback))();
-    }
-
-    void update(unsigned long now)
-    {
-        if(now - previousMillis >= interval) {
-            previousMillis = now;
-            executeCallback();
-        }
     }
 };
 
