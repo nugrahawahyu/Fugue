@@ -34,6 +34,7 @@
 #include "../Support/Facades/Fluid.h"
 #include "../Support/Facades/Scheduler/BaseEvent.h"
 #include "../Support/Facades/Scheduler/Event.h"
+#include "../Support/Facades/Scheduler/StaticEvent.h"
 #include "../Support/Facades/Scheduler/Scheduler.h"
 
 /** Sensors */

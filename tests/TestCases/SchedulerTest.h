@@ -2,7 +2,7 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 
 void ayam()
 {
-    Serial.println("Hello from Kambing!");
+    Serial.println("Hello from ayam!");
 }
 
 namespace Tests { namespace TestCases { 
@@ -19,12 +19,18 @@ public:
     void setup() 
     {
         Serial.println(F("### SCHEDULER TEST ###"));
+        Scheduler::every(2000, this, &SchedulerTest::kambing);
         Scheduler::every(2000, ayam);
     }
 
-    void loop() 
+    void loop()
     {
         Scheduler::update();
+    }
+
+    void kambing()
+    {
+        Serial.println("Hello from kambing!");
     }
 };
 
