@@ -5,9 +5,9 @@ using Nugraha::Devices::Device;
 class BlinkingLed : public Led
 {
 public:
-    long interval = 2000;
+    unsigned long interval = 2000;
 
-    BlinkingLed(int pin, Sensor* sensor=NULL, long interval=2000) : Led(pin, sensor), Device(pin, sensor)
+    BlinkingLed(int pin, Sensor* sensor=NULL, unsigned long interval=2000) : Led(pin, sensor), Device(pin, sensor)
     {
         this->interval = interval;
     }

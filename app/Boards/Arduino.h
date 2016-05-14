@@ -1,5 +1,6 @@
 namespace App { namespace Boards { 
 using namespace App::Devices;
+using namespace App::Gateways;
 using Nugraha::Devices::Device;
 using Nugraha::Sensors::Sensor;
 using Nugraha::Foundation::Board;
@@ -10,7 +11,7 @@ protected:
     
     void gateways()
     {
-
+        
     }
 
     void devices()

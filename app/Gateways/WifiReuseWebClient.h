@@ -6,8 +6,7 @@ class WifiReuseWebClient : public virtual WifiGateway
 protected:
     ESP8266WiFiMulti WiFiMulti;
     HTTPClient http;
-    long interval = 1000;
-    unsigned long previousMillis = 0;
+    unsigned long interval = 1000;
 
 public:
     void initialize()
@@ -22,7 +21,7 @@ public:
             delay(1000);
         }
 
-        WiFiMulti.addAP("SSID", "PASSWORD");
+        WiFiMulti.addAP("Fugue2", "fugue123");
 
         // allow reuse (if server supports it)
         http.setReuse(true);
@@ -30,31 +29,32 @@ public:
 
     void service()
     {
-        unsigned long currentMillis = millis();
-        if(currentMillis - previousMillis >= interval) {
-            previousMillis = currentMillis;
+        Debug::println("Starting Service...");
+        Scheduler::every(interval, this, &WifiReuseWebClient::httpGet);
+    }
 
-            // wait for WiFi connection
-            if((WiFiMulti.run() == WL_CONNECTED)) {
+    void httpGet()
+    {
+        // wait for WiFi connection
+        if((WiFiMulti.run() == WL_CONNECTED)) {
 
-                http.begin("http://192.168.1.12/test.html");
-                //http.begin("192.168.1.12", 80, "/test.html");
+            http.begin("http://54.249.82.173/publish/pub-c-3e5de365-5d57-48c7-a317-366ef2846eb4/sub-c-cca59b64-d972-11e5-bdd5-02ee2ddab7fe/0/cartracker/0/{\"text\":\"hello\"}");
+            //http.begin("192.168.1.12", 80, "/test.html");
 
-                int httpCode = http.GET();
-                if(httpCode > 0) {
-                    Serial.printf("[HTTP] GET... code: %d\n", httpCode);
+            int httpCode = http.GET();
+            if(httpCode > 0) {
+                Serial.printf("[HTTP] GET... code: %d\n", httpCode);
 
-                    // file found at server
-                    if(httpCode == HTTP_CODE_OK) {
-                        http.writeToStream(&Serial);
-                    }
-                } else {
-                    Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+                // file found at server
+                if(httpCode == HTTP_CODE_OK) {
+                    http.writeToStream(&Serial);
                 }
+            } else {
+                Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+            }
 
-                http.end();
-            }  
-        }
+            http.end();
+        }  
     }
 };
 

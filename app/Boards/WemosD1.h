@@ -10,7 +10,7 @@ protected:
 
     void gateways()
     {
-        
+        this->attachGateway(new WifiReuseWebClient());
     }
 
     /**
@@ -30,11 +30,11 @@ protected:
      */
     void devices()
     {
-        this->attachDevice(new BlinkingLed(D2, NULL, 1000));
-        this->attachDevice(new BlinkingLed(D3, NULL, 1300));
-        this->attachDevice(new BlinkingLed(D4, NULL, 1600));
-        this->attachDevice(new BlinkingLed(D5, NULL, 1900));
-        this->attachDevice(new BlinkingLed(D9, NULL, 2000));
+        // this->attachDevice(new BlinkingLed(D2, NULL, 1000));
+        // this->attachDevice(new BlinkingLed(D3, NULL, 1300));
+        // this->attachDevice(new BlinkingLed(D4, NULL, 1600));
+        // this->attachDevice(new BlinkingLed(D5, NULL, 1900));
+        this->attachDevice(new BlinkingLed(D9, NULL, 1000));
     }
 
     void sensors()
