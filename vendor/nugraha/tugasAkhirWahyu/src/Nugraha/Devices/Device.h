@@ -1,23 +1,22 @@
 namespace Nugraha { namespace Devices {
-using Nugraha::Sensors::Sensor;
 using Nugraha::Support::Facades::Debug;
-using Nugraha::Devices::Drivers::Driver;
-using Nugraha::Devices::Drivers::GenericDriver;
+using Nugraha::Contracts::Sensors::SensorContract;
+using Nugraha::Contracts::Devices::DriverContract;
 using Nugraha::Contracts::Devices::DeviceContract;
 
 class Device : public virtual DeviceContract
 {
 protected:
-    Sensor* sensor;
-    Driver* driver;
+    SensorContract* sensor;
+    DriverContract* driver;
     
 public:
     int pin = -1;
     bool isOn = false;
     unsigned long previousMillis = 0;
-    static Driver* defaultDriver;
+    static DriverContract* defaultDriver;
 
-    Device(int pin, Sensor* sensor)
+    Device(int pin, SensorContract* sensor)
     {
         this->pin = pin;
         this->sensor = sensor;
@@ -66,12 +65,12 @@ public:
         }
     }
 
-    void setSensor(Sensor* sensor)
+    void setSensor(SensorContract* sensor)
     {
         this->sensor = sensor;
     }
 
-    void setDriver(Driver* driver)
+    void setDriver(DriverContract* driver)
     {
         this->driver = driver;
     }

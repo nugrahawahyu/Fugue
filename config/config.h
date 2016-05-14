@@ -12,4 +12,4 @@ Application* application = new Application(
     true
 );
 
-Driver* Device::defaultDriver = new Drivers::SinkModeDriver();
+DriverContract* Device::defaultDriver = new Drivers::SinkModeDriver();

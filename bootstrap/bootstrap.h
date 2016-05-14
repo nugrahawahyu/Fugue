@@ -2,7 +2,7 @@
 #define _bootstrap_h_
 using Nugraha::Foundation::Application;
 using namespace Main;
-using namespace Nugraha::Devices;
+using Nugraha::Contracts::Devices::DriverContract;
 
 #include "../config/config.h"
 
