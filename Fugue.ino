@@ -1,7 +1,7 @@
 /**
- * TugasAkhirWahyu - Sebuah program Arduino untuk Home Automation.
+ * Fugue - Sebuah program Arduino untuk Home Automation.
  *
- * @package TugasAkhirWahyu
+ * @package Nugraha
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
  */
 #include "Fugue.h"
