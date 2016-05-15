@@ -29,7 +29,7 @@ public:
 
     void service()
     {
-        Debug::println("Starting Service...");
+        Debug::println("Starting Wifi Reuse Web Client service...");
         Scheduler::every(interval, this, &WifiReuseWebClient::httpGet);
     }
 

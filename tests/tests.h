@@ -5,6 +5,11 @@
 #include <ESP8266HTTPClient.h>
 #include <vector>
 #include "Timer.h"
+
+/** External libraries */
+#include <ArduinoJson.h>
+
+/** Main app libraries */
 #include "../Fugue.h"
 
 /** Test Cases */
@@ -22,4 +27,4 @@
 
 namespace Tests { namespace TestCases {} }
 using namespace Nugraha::Devices;
-Driver* Device::defaultDriver = new Drivers::SinkModeDriver();
+DriverContract* Device::defaultDriver = new Drivers::SinkModeDriver();
