@@ -1,10 +1,12 @@
 namespace Nugraha { namespace Devices {
+using Nugraha::Traits::HasLogger;
 using Nugraha::Support::Facades::Debug;
 using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Devices::DriverContract;
 using Nugraha::Contracts::Devices::DeviceContract;
+using Nugraha::Contracts::Foundation::LoggerContract;
 
-class Device : public virtual DeviceContract
+class Device : public virtual DeviceContract, public HasLogger
 {
 protected:
     SensorContract* sensor;
@@ -30,11 +32,9 @@ public:
     void toggle()
     {
         if (this->isOn==false) {
-            Debug::println("Hidupkan");
             this->turnOn();
         }
         else {
-            Debug::println("Matikan");
             this->turnOff();
         }
     }
@@ -48,6 +48,7 @@ public:
         if(this->pin != -1) {
             if(driver->turnOn(this->pin)) {
                 this->isOn = true;
+                logger->addNotification(1, String(this->pin));
             }
         }
     }
@@ -61,6 +62,7 @@ public:
         if(this->pin != -1) {
             if(driver->turnOff(this->pin)) {
                 this->isOn = false;
+                logger->addNotification(0, String(this->pin));
             }
         }
     }
@@ -74,5 +76,16 @@ public:
     {
         this->driver = driver;
     }
+    
+    void setLogger(LoggerContract* logger) override
+    {
+        HasLogger::setLogger(logger);
+    }
+
+    LoggerContract* getLogger() override
+    {
+        HasLogger::getLogger();
+    }
 };
+
 }}

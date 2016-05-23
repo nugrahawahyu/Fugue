@@ -5,10 +5,8 @@
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
  */
 #include "Fugue.h"
+
 namespace Main {
-using App::Devices::Led;
-using namespace App::Boards;
-using Nugraha::Foundation::Board;
 using Nugraha::Foundation::BaseController;
 
 class Controller : public virtual BaseController
@@ -23,8 +21,9 @@ public:
 
     void loop()
     {
-        Scheduler::update();
+        Scheduler::handleEvents();
     }
 };
+
 }
 #include "bootstrap/bootstrap.h"

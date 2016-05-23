@@ -1,9 +1,11 @@
 namespace Nugraha { namespace Sensors {
+using Nugraha::Traits::HasLogger;
 using Nugraha::Sensors::Drivers::Driver;
 using Nugraha::Sensors::Drivers::GenericDriver;
 using Nugraha::Contracts::Sensors::SensorContract;
+using Nugraha::Contracts::Foundation::LoggerContract;
 
-class Sensor : public SensorContract 
+class Sensor : public virtual SensorContract, public HasLogger
 {
 protected:
     Driver* driver;
@@ -17,6 +19,16 @@ public:
         this->pin = pin;
         this->name = name;
         this->driver = new GenericDriver();
+    }
+    
+    void setLogger(LoggerContract* logger) override
+    {
+        HasLogger::setLogger(logger);
+    }
+
+    LoggerContract* getLogger() override
+    {
+        HasLogger::getLogger();
     }
 };
 

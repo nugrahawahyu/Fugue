@@ -1,10 +1,12 @@
 #ifndef _bootstrap_h_
 #define _bootstrap_h_
-using Nugraha::Foundation::Application;
+
 using namespace Main;
+using namespace App::Boards;
+using Nugraha::Foundation::Application;
 using Nugraha::Contracts::Devices::DriverContract;
 
-#include "../config/config.h"
+#include "../config/application.h"
 
 void printBootMessage()
 {
@@ -13,8 +15,7 @@ Serial.println(F("| |     / /  ___    / /  _____  ____    ____ ___   ___ "));
 Serial.println(F("| | /| / /  / _ \\  / /  / ___/ / __ \\  / __ `__ \\ / _ \\"));
 Serial.println(F("| |/ |/ /  /  __/ / /  / /__  / /_/ / / / / / / //  __/"));
 Serial.println(F("|__/|__/   \\___/ /_/   \\___/  \\____/ /_/ /_/ /_/ \\___/ "));
-Serial.println(F("                   --- MR. Wahyu ---                   "));                                                                                                 
-                                                                                                 
+Serial.println(F("                   --- MR. Wahyu ---                   "));                                                                                                                                                                                   
 }
 
 void setup()

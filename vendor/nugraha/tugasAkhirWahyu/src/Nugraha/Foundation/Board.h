@@ -1,19 +1,19 @@
 namespace Nugraha { namespace Foundation {
+using Nugraha::Traits::HasLogger;
 using Nugraha::Collections::Vector;
-using Nugraha::Collections::Collection;
 using Nugraha::Contracts::Devices::DeviceContract;
 using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Gateways::GatewayContract;
 using Nugraha::Contracts::Foundation::BoardContract;
+using Nugraha::Contracts::Foundation::LoggerContract;
+using Nugraha::Contracts::Collections::CollectionContract;
 
-
-class Board : public virtual BoardContract
+class Board : public virtual BoardContract, public HasLogger
 {  
 protected:
-    Collection<DeviceContract*>* devicesCollection;
-    Collection<SensorContract*>* sensorsCollection;
-    Collection<GatewayContract*>* gatewaysCollection;
-
+    CollectionContract<DeviceContract*>* devicesCollection;
+    CollectionContract<SensorContract*>* sensorsCollection;
+    CollectionContract<GatewayContract*>* gatewaysCollection;
     DeviceContract* Default = NULL;
 
     void initializeAll()
@@ -33,12 +33,13 @@ protected:
         }
     }
     
-public: 
+public:
     Board()
     {
         devicesCollection = new Vector<DeviceContract*>();
         sensorsCollection = new Vector<SensorContract*>();
         gatewaysCollection = new Vector<GatewayContract*>();
+        setLogger(new Logger());
     }
 
     void initialize()
@@ -51,17 +52,19 @@ public:
 
     void automate()
     {
-        /** Jalankan service setiap Gateway. */
-        for(int i=0; i<gatewaysCollection->count(); i++) {
-            if(gatewaysCollection->getMemberAt(i) != NULL) {
-                gatewaysCollection->getMemberAt(i)->service();
-            }
-        }
-
         /** Jalankan behavior setiap Device. */
         for(int i=0; i<devicesCollection->count(); i++) {
             if(devicesCollection->getMemberAt(i) != NULL) {
                 devicesCollection->getMemberAt(i)->behavior();
+                devicesCollection->getMemberAt(i)->setLogger(logger);
+            }
+        }
+        
+        /** Jalankan service setiap Gateway. */
+        for(int i=0; i<gatewaysCollection->count(); i++) {
+            if(gatewaysCollection->getMemberAt(i) != NULL) {
+                gatewaysCollection->getMemberAt(i)->service();
+                gatewaysCollection->getMemberAt(i)->setLogger(logger);
             }
         }
     }
@@ -80,10 +83,13 @@ public:
     {
         gatewaysCollection->add(gateway);
     }
+    
     ~Board()
     {
+        delete gatewaysCollection;
         delete devicesCollection;
         delete sensorsCollection;
+        delete logger;
     }
 };
 

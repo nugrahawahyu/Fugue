@@ -40,7 +40,7 @@ public:
      * Method yang akan mengecek setiap event apakah callback-nya harus dieksekusi
      * atau tidak.
      */
-    static void update()
+    static void handleEvents()
     {
         for(int i=0; i<EventCollection->count(); i++)
         {

@@ -3,8 +3,11 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
+#include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
 #include <vector>
-#include "Timer.h"
+#include <map>
 
 /** External libraries */
 #include <ArduinoJson.h>
@@ -25,6 +28,10 @@
 #include "TestCases/SchedulerTest.h"
 #endif
 
+#ifdef JsonTest_h
+#include "TestCases/JsonTest.h"
+#endif
+
 namespace Tests { namespace TestCases {} }
 using namespace Nugraha::Devices;
-DriverContract* Device::defaultDriver = new Drivers::SinkModeDriver();
+

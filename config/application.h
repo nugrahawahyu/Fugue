@@ -11,5 +11,3 @@ Application* application = new Application(
     /** Start serial communication? */
     true
 );
-
-DriverContract* Device::defaultDriver = new Drivers::SinkModeDriver();
