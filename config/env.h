@@ -12,13 +12,13 @@ namespace env {
     }
 
     namespace httpClient {
-        String host = "www.pubnub.com";
+        String host = "www.wahyunugraha.com";
         String mode = "publish";
-        String publishKey = "publish-key";
-        String subscribeKey = "subscribe-key";
-        String signature = "signature";
-        String channelName = "channel";
-        String callback = "callback";
+        String publishKey = "pub-w-3e5de365-5d57-48c7-a317-366ef2846eb4";
+        String subscribeKey = "sub-n-cca59b64-d972-11e5-bdd5-02ee2ddab7fe";
+        String signature = "0";
+        String channelName = "rumah1";
+        String callback = "0";
     }
 
     namespace server {
