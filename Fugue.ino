@@ -15,7 +15,7 @@ public:
     void setup()
     {
         Debug::isDebugMode = true;
-        if(!obtainIpAddressAutomatically) {
+        if(!env::wifi::obtainIpAddressAutomatically) {
             WiFi.config(env::wifi::ip, env::wifi::gateway, env::wifi::subnet, env::wifi::dns1, env::wifi::dns2);
         }
         board->initialize();
