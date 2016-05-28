@@ -1,5 +1,5 @@
 /**
- * Fugue - Sebuah program Arduino untuk Home Automation.
+ * Fugue - A Wemos D1 framework.
  *
  * @package Nugraha
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
