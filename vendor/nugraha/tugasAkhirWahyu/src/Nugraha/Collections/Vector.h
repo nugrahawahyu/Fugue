@@ -35,7 +35,7 @@ public:
      */
     void removeAt(int index)
     {
-        
+        members.erase(members.begin() + index);
     }
 
     /**
@@ -46,7 +46,11 @@ public:
      */
     MembersType getMemberAt(int index)
     {
-        return members[index];
+        if(index >= 0 && index < members.size()) {
+            return members[index];
+        } 
+        return NULL;
     }
 };
+
 }}

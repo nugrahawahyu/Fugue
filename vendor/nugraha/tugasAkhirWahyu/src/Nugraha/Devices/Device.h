@@ -9,15 +9,14 @@ using Nugraha::Contracts::Foundation::LoggerContract;
 class Device : public virtual DeviceContract, public HasLogger
 {
 protected:
-    SensorContract* sensor;
-    DriverContract* driver;
-    
-public:
     int pin = -1;
     bool isOn = false;
+    SensorContract* sensor;
+    DriverContract* driver;
     unsigned long previousMillis = 0;
     static DriverContract* defaultDriver;
-
+    
+public:
     Device(int pin, SensorContract* sensor)
     {
         this->pin = pin;
@@ -65,6 +64,11 @@ public:
                 logger->addNotification(0, String(this->pin));
             }
         }
+    }
+
+    int getPin()
+    {
+        return this->pin;
     }
 
     void setSensor(SensorContract* sensor)

@@ -8,14 +8,14 @@ public:
     bool turnOn(int pin)
     {
         digitalWrite(pin, LOW);
-        delay(200);
+        delay(1000);
         digitalWrite(pin, HIGH);
         return true;
     }
     bool turnOff(int pin)
     {
         digitalWrite(pin, LOW);
-        delay(200);
+        delay(1000);
         digitalWrite(pin, HIGH);
         return true;
     }

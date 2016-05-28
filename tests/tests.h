@@ -20,16 +20,20 @@
 #include "TestCases/FreeMemoryTest.h"
 #endif
 
-#ifdef TimerTest_h
-#include "TestCases/TimerTest.h"
-#endif
-
 #ifdef SchedulerTest_h
 #include "TestCases/SchedulerTest.h"
 #endif
 
 #ifdef JsonTest_h
 #include "TestCases/JsonTest.h"
+#endif
+
+#ifdef UserCommandExecutorTest_h
+#include "TestCases/UserCommandExecutorTest.h"
+#endif
+
+#ifdef SignalStrengthTest_h
+#include "TestCases/SignalStrengthTest.h"
 #endif
 
 namespace Tests { namespace TestCases {} }

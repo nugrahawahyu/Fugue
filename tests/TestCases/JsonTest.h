@@ -4,57 +4,29 @@ using Nugraha::Foundation::BaseController;
 
 class JsonTest : public virtual BaseController
 {
+protected:
+
 public:
     Logger* logger = new Logger();
-    void setup(void) 
+    int i=0;
+
+    void generateMessage()
     {
-        Serial.begin(115200);
-        logger->addNotification(1, "1");
-        logger->addNotification(1, "2");
-        logger->addNotification(1, "3");
-        logger->addNotification(0, "4");
-        logger->addNotification(0, "5");
-        logger->addNotification(0, "6");
-        logger->addSensorMeasurement("suhu", "33");
-        logger->addSensorMeasurement("cahaya", "1");
         String messages = logger->getLogMessage();
         Serial.println(messages);
+        i++;
+    }
+
+    void setup(void) 
+    {
+
     }
 
     void loop() 
     {
-/**
-{
-  "records": [
-    {
-      "notifications": {
-        "turnOn": [
-          "4",
-          "5",
-          "6"
-        ],
-        "turnOff": [
-          "1",
-          "2",
-          "3"
-        ]
-      }
-    },
-    {
-      "measurements": [
-        {
-          "sensor": "suhu",
-          "value": "33"
-        },
-        {
-          "sensor": "cahaya",
-          "value": "1"
+        if(i<1) {
+            generateMessage();
         }
-      ]
-    }
-  ]
-}
-*/
     }
 };
 

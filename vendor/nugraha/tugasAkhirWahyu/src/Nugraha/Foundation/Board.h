@@ -65,6 +65,7 @@ public:
             if(gatewaysCollection->getMemberAt(i) != NULL) {
                 gatewaysCollection->getMemberAt(i)->service();
                 gatewaysCollection->getMemberAt(i)->setLogger(logger);
+                gatewaysCollection->getMemberAt(i)->setBoard(this);
             }
         }
     }
@@ -83,7 +84,51 @@ public:
     {
         gatewaysCollection->add(gateway);
     }
-    
+
+    void executeUserCommand(String userCommands)
+    {
+        DeviceContract* device;
+        DynamicJsonBuffer jsonBuffer;
+        JsonObject& root = jsonBuffer.parseObject(userCommands);
+        if (!root.success()) {
+            Serial.println("parseObject() failed");
+            return;
+        }
+
+        for(int i=0; i<root["commands"].size(); i++) {
+            int pin = root["commands"][i]["pin"];
+            String action = root["commands"][i]["action"];
+            
+            if(action=="turnOn") {
+                if((device=getDeviceByPin(pin)) != NULL) {
+                    device->turnOn();
+                }
+            } else if(action=="turnOff") {
+                if((device=getDeviceByPin(pin)) != NULL) {
+                    device->turnOff();
+                }
+            } else if(action=="toggle") {
+                if((device=getDeviceByPin(pin)) != NULL) {
+                    device->toggle();
+                }
+            }
+        }
+    }
+
+    DeviceContract* getDeviceByPin(int pin)
+    {
+        DeviceContract* device;
+        for(int i=0; i<devicesCollection->count(); i++) {
+            device = devicesCollection->getMemberAt(i);
+            if(device != NULL) {
+                if(device->getPin() == pin) {
+                    return device;
+                }
+            }
+        }
+        return NULL;
+    }
+
     ~Board()
     {
         delete gatewaysCollection;

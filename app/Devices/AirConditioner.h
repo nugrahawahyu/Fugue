@@ -16,9 +16,7 @@ public:
 
     void behavior()
     {
-        Scheduler::every(2000, [=]() {
-            this->toggle();
-        });
+
     }
 };
 

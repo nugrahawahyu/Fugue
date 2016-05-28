@@ -8,7 +8,7 @@ class FreeMemoryTest : public virtual BaseController
 public:
     void setup(void) 
     {
-        Serial.begin(115200);
+
     }
 
     void loop() 

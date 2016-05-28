@@ -1,10 +1,10 @@
-#define JsonTest_h
+#define SignalStrengthTest_h
 #include "tests.h"
 using namespace App::Boards;
 using namespace Tests::TestCases;
 using Nugraha::Foundation::Application;
 
-Application* test = new Application(new JsonTest(), new WemosD1(), 115200, true);
+Application* test = new Application(new SignalStrengthTest(), new WemosD1(), 115200, true);
 
 void setup()
 {

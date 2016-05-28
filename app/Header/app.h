@@ -10,6 +10,7 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 
 /** Gateways */
 #include "../Gateways/HTTPClients/PersistentHttp.h"
+#include "../Gateways/HTTPClients/NonPersistentHttp.h"
 #include "../Gateways/WebServer/Server.h"
 
 /** Boards */

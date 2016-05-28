@@ -3,47 +3,113 @@ using Nugraha::Contracts::Foundation::LoggerContract;
 
 class Logger : public LoggerContract {
 protected:
-        DynamicJsonBuffer jsonBuffer;
-        JsonObject& root = jsonBuffer.createObject();
-        JsonArray& records = root.createNestedArray("records");
-        JsonObject& records_notifications = records.createNestedObject().createNestedObject("notifications");
-        JsonArray& records_notifications_turnOn = records_notifications.createNestedArray("turnOn");
-        JsonArray& records_notifications_turnOff = records_notifications.createNestedArray("turnOff");
-        JsonArray& records_measurements = records.createNestedObject().createNestedArray("measurements");
+    DynamicJsonBuffer* jsonBuffer = new DynamicJsonBuffer();
+    JsonObject* root = &jsonBuffer->createObject();
+    JsonArray* notifications = &root->createNestedArray("notifications");
+    JsonArray* measurements = &root->createNestedArray("measurements");
+    JsonArray* connectionInfos = &root->createNestedArray("connectionInfos");
+
+    bool sendBoardInfo = true;
+
+    void clean()
+    {
+        delete jsonBuffer;
+        jsonBuffer = NULL;
+    }
+
+    void reInitializeJsonBuffer()
+    {
+        jsonBuffer = new DynamicJsonBuffer();
+        root = &jsonBuffer->createObject();
+        notifications = &root->createNestedArray("notifications");
+        measurements = &root->createNestedArray("measurements");
+        connectionInfos = &root->createNestedArray("connectionInfos");
+    }
+
+    void addBoardInfoToRecord()
+    {
+        JsonObject& boardInfo = root->createNestedObject("boardInfo");
+        boardInfo["chipId"] = ESP.getChipId();
+        boardInfo["cpuFreqMHz"] = ESP.getCpuFreqMHz();
+        boardInfo["sdkVersion"] = ESP.getSdkVersion();
+        boardInfo["bootVersion"] = ESP.getBootVersion();
+        boardInfo["bootMode"] = ESP.getBootMode();
+        boardInfo["cycleCount"] = ESP.getCycleCount();
+        boardInfo["freeHeap"] = ESP.getFreeHeap();
+        boardInfo["sketchSize"] = ESP.getSketchSize();
+        boardInfo["freeSketchSpace"] = ESP.getFreeSketchSpace();
+    }
 
 public:
     void addNotification(int code, String message)
     {
+        if(jsonBuffer == NULL)
+            reInitializeJsonBuffer();
+        
+        String state;
         switch(code) {
         case 0 : 
-            records_notifications_turnOff.add(message);
+            state = "off";
             break;
         case 1 : 
-            records_notifications_turnOn.add(message);
+            state = "on";
             break;
         default : 
             break;
         }
+        JsonObject& notification = notifications->createNestedObject();
+        notification["pin"] = message;
+        notification["state"] = state;
+    }
+
+    void addConnectionInfo(String parameter, String value)
+    {
+        if(jsonBuffer == NULL)
+            reInitializeJsonBuffer();
+
+        JsonObject& connectionInfo = connectionInfos->createNestedObject();
+        connectionInfo["parameter"] = parameter;
+        connectionInfo["value"] = value;
     }
 
     void addSensorMeasurement(String sensorName, String measurementValue)
     {
-        JsonObject& measurement = records_measurements.createNestedObject();
+        if(jsonBuffer == NULL)
+            reInitializeJsonBuffer();
+
+        JsonObject& measurement = measurements->createNestedObject();
         measurement["sensor"] = sensorName;
         measurement["value"] = measurementValue;
     }
 
     String getLogMessage()
     {
-        String logMessages;
-        root.printTo(logMessages);
-        return logMessages;
+        if(jsonBuffer != NULL) {
+            if(sendBoardInfo) {
+                addBoardInfoToRecord();
+            }
+            String logMessages;
+            root->printTo(logMessages);
+            clean();
+            reInitializeJsonBuffer();
+            return logMessages;
+        } else {
+            return "{\"records\":[]}";
+        }
     }
 
     void printToSerial()
     {
-        root.prettyPrintTo(Serial);
+        if(jsonBuffer != NULL) {
+            if(sendBoardInfo) {
+                addBoardInfoToRecord();
+            }
+            root->prettyPrintTo(Serial);
+        }
+        else
+            Serial.println("NULL");
     }
+
 };
 
 }}

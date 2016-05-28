@@ -8,6 +8,7 @@ public:
     virtual void gateways()=0;
     virtual void initialize()=0;
     virtual void automate()=0;
+    virtual void executeUserCommand(String userCommands)=0;
 };
 
 }}}

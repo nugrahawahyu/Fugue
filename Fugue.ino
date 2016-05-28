@@ -15,6 +15,7 @@ public:
     void setup()
     {
         Debug::isDebugMode = true;
+        WiFi.config(env::wifi::ip, env::wifi::gateway, env::wifi::subnet, env::wifi::dns1, env::wifi::dns2);
         board->initialize();
         board->automate();
     }

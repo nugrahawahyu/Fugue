@@ -22,13 +22,13 @@
 /** Contracts */
 #include "../Contracts/Foundation/LoggerContract.h"
 #include "../Contracts/Support/Facades/Scheduler/EventContract.h"
+#include "../Contracts/Foundation/BoardContract.h"
 #include "../Contracts/Gateways/GatewayContract.h"
 #include "../Contracts/Sensors/DriverContract.h"
 #include "../Contracts/Sensors/SensorContract.h"
 #include "../Contracts/Devices/DriverContract.h"
 #include "../Contracts/Devices/DeviceContract.h"
 #include "../Contracts/Collections/CollectionContract.h"
-#include "../Contracts/Foundation/BoardContract.h"
 
 /** Collections */
 #include "../Collections/Collection.h"
