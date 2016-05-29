@@ -16,6 +16,8 @@ public:
         this->beginSerial = beginSerial;
     }
 
+    virtual ~Application() {}
+
     virtual void setup()
     {
         this->controller->setup();
