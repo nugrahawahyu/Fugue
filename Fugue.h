@@ -12,9 +12,6 @@
 #include <vector>
 #include <map>
 
-/** External libraries */
-#include <ArduinoJson.h>
-
 /** env */
 #include "config/env.h"
 
