@@ -7,6 +7,8 @@ protected:
     int notificationCode = -1;
 
 public:
+    virtual ~HasNotification() {}
+
     void setNotification(int code, String notification)
     {
         this->notificationCode = code;

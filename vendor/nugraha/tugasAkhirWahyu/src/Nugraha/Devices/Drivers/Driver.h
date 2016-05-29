@@ -6,6 +6,7 @@ class Driver: public virtual DriverContract
 protected:
     
 public:
+    virtual ~Driver() {}
 
 };
 

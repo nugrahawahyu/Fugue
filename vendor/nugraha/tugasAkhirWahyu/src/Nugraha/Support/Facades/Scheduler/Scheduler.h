@@ -1,13 +1,42 @@
 namespace Nugraha { namespace Support { namespace Facades { namespace Scheduler {
-using Nugraha::Collections::Vector;
 using Nugraha::Collections::Collection;
+using Nugraha::Contracts::Collections::CollectionContract;
 
 class Scheduler 
 {
 protected:
-    static Collection<BaseEvent*>* EventCollection;
+    static CollectionContract<BaseEvent*>* eventCollection;
+    static bool init;
 
 public:
+    /**
+     * Method yang akan mengecek setiap event apakah callback-nya harus dieksekusi
+     * atau tidak.
+     */
+    static void handleEvents()
+    {
+        if(init) {
+            after(1, [=](){});
+            init = false;
+        }
+
+        for(auto event = eventCollection->getMembers().begin(); event != eventCollection->getMembers().end();) {
+            (*event)->update(millis());
+            if((*event)->getRepeatCount() == 0) {
+                Serial.println(eventCollection->count());
+                Serial.println("Habis, Deleting Event...");
+                Serial.printf("getFreeHeap: %08d\n", ESP.getFreeHeap());
+                delete *event;
+                *event = NULL;
+                event = eventCollection->getMembers().erase(event);
+                Serial.printf("getFreeHeap: %08d\n", ESP.getFreeHeap());
+                Serial.println("Event berhasil di delete!!!!!!!!!");
+                Serial.println(eventCollection->count());
+            } else {
+                ++event;
+            }
+        }
+    }
 
     /**
      * Method untuk men-register-kan sebuah event yang akan mengeksekusi callback
@@ -19,7 +48,7 @@ public:
     template<typename Callback>
     static void every(unsigned long interval, Callback callback, int repeatCount = -1)
     {
-        EventCollection->add(new StaticEvent<Callback>(interval, callback));
+        eventCollection->add(new StaticEvent<Callback>(interval, callback, repeatCount));
     }
 
     /**
@@ -33,21 +62,26 @@ public:
     template<typename Callback, typename ObjectType>
     static void every(unsigned long interval, ObjectType object, Callback callback, int repeatCount = -1)
     {
-        EventCollection->add(new Event<Callback, ObjectType>(interval, callback, object));
+        eventCollection->add(new Event<Callback, ObjectType>(interval, callback, object, repeatCount));
     }
 
     /**
-     * Method yang akan mengecek setiap event apakah callback-nya harus dieksekusi
-     * atau tidak.
+     * Method untuk men-register-kan event yang akan dieksekusi setelah mili detik yang ditentukan
      */
-    static void handleEvents()
+    template<typename Callback>
+    static void after(unsigned long afterMillis, Callback callback)
     {
-        for(int i=0; i<EventCollection->count(); i++)
-        {
-            EventCollection->getMemberAt(i)->update(millis());
-        }
+        every(afterMillis, callback, 1);
+    }
+
+
+    static BaseEvent* getEventAt(int index)
+    {
+        return eventCollection->getMemberAt(index);
     }
 };
 
-Collection<BaseEvent*>* Scheduler::EventCollection = new Vector<BaseEvent*>();
+CollectionContract<BaseEvent*>* Scheduler::eventCollection = new Collection<BaseEvent*>();
+bool Scheduler::init = true;
+
 }}}}

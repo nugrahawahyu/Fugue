@@ -7,6 +7,8 @@ protected:
     LoggerContract* logger;
 
 public:
+    virtual ~HasLogger() {}
+
     void setLogger(LoggerContract* logger)
     {
         this->logger = logger;

@@ -11,7 +11,7 @@ protected:
     {
         // this->attachGateway(new Server());
         
-        this->attachGateway(new NonPersistentHttp(std::map<String, String>({
+        this->attachGateway(new PersistentHttp(std::map<String, String>({
             { "host"         , env::httpClient::host },
             { "mode"         , env::httpClient::mode },
             { "publishKey"   , env::httpClient::publishKey },
@@ -24,10 +24,11 @@ protected:
 
     void devices()
     {
-        // this->attachDevice(new BlinkingLed(D2, NULL, 1000));
-        // this->attachDevice(new BlinkingLed(D3, NULL, 1300));
-        // this->attachDevice(new BlinkingLed(D4, NULL, 1600));
-        this->attachDevice(new AirConditioner(D13, NULL));
+        this->attachDevice(new Led(D2, NULL));
+        this->attachDevice(new Led(D3, NULL));
+        this->attachDevice(new Led(D4, NULL));
+        this->attachDevice(new Led(D5, NULL));
+        this->attachDevice(new AirConditioner(D6, NULL));
         this->attachDevice(new Led(BUILTIN_LED, NULL));
     }
 

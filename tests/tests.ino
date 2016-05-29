@@ -1,10 +1,12 @@
-#define SignalStrengthTest_h
+// #define _VectorOfObjectTest
+#define _SchedulerTest
 #include "tests.h"
 using namespace App::Boards;
 using namespace Tests::TestCases;
 using Nugraha::Foundation::Application;
 
-Application* test = new Application(new SignalStrengthTest(), new WemosD1(), 115200, true);
+Application* test = new Application(new SchedulerTest(), new WemosD1(), 115200, true);
+// Application* test = new Application(new VectorOfObjectTest(), new WemosD1(), 115200, true);
 
 void setup()
 {

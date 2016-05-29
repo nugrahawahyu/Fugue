@@ -1,4 +1,5 @@
 namespace Nugraha { namespace Devices { namespace Drivers { 
+using Nugraha::Support::Facades::Scheduler::Scheduler;
 
 class AirConditionerDriver: public virtual Driver 
 {
@@ -7,16 +8,18 @@ protected:
 public:
     bool turnOn(int pin)
     {
-        digitalWrite(pin, LOW);
-        delay(1000);
         digitalWrite(pin, HIGH);
+        Scheduler::after(50, [=]() {
+            digitalWrite(pin, LOW);
+        });
         return true;
     }
     bool turnOff(int pin)
     {
-        digitalWrite(pin, LOW);
-        delay(1000);
         digitalWrite(pin, HIGH);
+        Scheduler::after(50, [=]() {
+            digitalWrite(pin, LOW);
+        });
         return true;
     }
 };

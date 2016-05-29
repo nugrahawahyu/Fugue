@@ -1,4 +1,5 @@
 namespace Nugraha { namespace Devices {
+using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
 using Nugraha::Support::Facades::Debug;
 using Nugraha::Contracts::Sensors::SensorContract;
@@ -6,7 +7,7 @@ using Nugraha::Contracts::Devices::DriverContract;
 using Nugraha::Contracts::Devices::DeviceContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 
-class Device : public virtual DeviceContract, public HasLogger
+class Device : public virtual DeviceContract, public HasLogger, public HasId
 {
 protected:
     int pin = -1;
@@ -23,6 +24,8 @@ public:
         this->sensor = sensor;
         this->driver = Device::defaultDriver;
     }
+    
+    virtual ~Device() {}
 
     /**
      * Jika perangkat sedang hidup maka matikan,
@@ -80,16 +83,12 @@ public:
     {
         this->driver = driver;
     }
-    
-    void setLogger(LoggerContract* logger) override
-    {
-        HasLogger::setLogger(logger);
-    }
 
-    LoggerContract* getLogger() override
-    {
-        HasLogger::getLogger();
-    }
+    int getId() override {HasId::getId();}
+    
+    void setLogger(LoggerContract* logger) override {HasLogger::setLogger(logger);}
+
+    LoggerContract* getLogger() override {HasLogger::getLogger();}
 };
 
 }}

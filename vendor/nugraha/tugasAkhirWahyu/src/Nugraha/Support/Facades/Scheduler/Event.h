@@ -8,7 +8,7 @@ protected:
     ObjectType object;
 
 public:
-    Event(unsigned long interval, Callback callback, ObjectType object)
+    Event(unsigned long interval, Callback callback, ObjectType object, int repeatCount) : BaseEvent(interval, repeatCount)
     {
         this->interval = interval;
         this->callback = callback;

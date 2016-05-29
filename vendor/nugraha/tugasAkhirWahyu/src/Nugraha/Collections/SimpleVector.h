@@ -7,6 +7,7 @@ protected:
     MembersType* members;
 
 public:
+    virtual ~SimpleVector() {}
     /**
      * Mendapatkan jumlah member dari koleksi members.
      * 

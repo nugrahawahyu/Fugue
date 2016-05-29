@@ -9,31 +9,32 @@
 #include <vector>
 #include <map>
 
-/** External libraries */
-#include <ArduinoJson.h>
-
 /** Main app libraries */
 #include "../Fugue.h"
 
 /** Test Cases */
-#ifdef FreeMemoryTest_h
+#ifdef _FreeMemoryTest
 #include "TestCases/FreeMemoryTest.h"
 #endif
 
-#ifdef SchedulerTest_h
+#ifdef _SchedulerTest
 #include "TestCases/SchedulerTest.h"
 #endif
 
-#ifdef JsonTest_h
+#ifdef _JsonTest
 #include "TestCases/JsonTest.h"
 #endif
 
-#ifdef UserCommandExecutorTest_h
+#ifdef _UserCommandExecutorTest
 #include "TestCases/UserCommandExecutorTest.h"
 #endif
 
-#ifdef SignalStrengthTest_h
+#ifdef _SignalStrengthTest
 #include "TestCases/SignalStrengthTest.h"
+#endif
+
+#ifdef _VectorOfObjectTest
+#include "TestCases/VectorOfObjectTest.h"
 #endif
 
 namespace Tests { namespace TestCases {} }

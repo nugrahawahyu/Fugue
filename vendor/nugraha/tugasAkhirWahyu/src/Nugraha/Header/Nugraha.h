@@ -38,6 +38,7 @@
  /** Traits */
 #include "../Traits/HasNotification.h"
 #include "../Traits/HasLogger.h"
+#include "../Traits/HasId.h"
 
 /** Support */
 #include "../Support/Facades/Debug.h"

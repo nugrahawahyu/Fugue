@@ -4,7 +4,9 @@ using Nugraha::Contracts::Foundation::LoggerContract;
 
 class GatewayContract 
 {
-public:
+public:    
+    virtual ~GatewayContract() {}
+    virtual int getId()=0;
     virtual void initialize()=0;
     virtual void service()=0;
     virtual void setLogger(LoggerContract* logger)=0;

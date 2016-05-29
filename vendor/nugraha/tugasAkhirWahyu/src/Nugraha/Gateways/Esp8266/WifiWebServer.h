@@ -9,6 +9,8 @@ protected:
     String message;
     
 public:
+    virtual ~WifiWebServer() {}
+    
     void setMessage(String message)
     {
         this->message = message;

@@ -1,10 +1,11 @@
 namespace Nugraha { namespace Gateways { namespace Esp8266 {
+using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
 using Nugraha::Contracts::Gateways::GatewayContract;
 using Nugraha::Contracts::Foundation::BoardContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 
-class WifiHttpClient : public virtual GatewayContract, public HasLogger
+class WifiHttpClient : public virtual GatewayContract, public HasLogger, public HasId
 {
 protected:
     ESP8266WiFiMulti WiFiMulti;
@@ -36,6 +37,8 @@ public:
         this->channelName = setting["channelName"];
         this->callback = setting["callback"];
     }
+
+    virtual ~WifiHttpClient() {}
     
     void initialize()
     {
@@ -91,6 +94,8 @@ public:
             http.end();
         }
     }
+
+    int getId() override {HasId::getId();}
 
     void updateMessage()
     {

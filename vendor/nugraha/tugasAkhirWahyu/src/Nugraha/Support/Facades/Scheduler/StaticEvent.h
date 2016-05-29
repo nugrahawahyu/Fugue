@@ -7,9 +7,9 @@ protected:
     Callback callback;
     
 public:
-    StaticEvent(unsigned long interval, Callback callback) : callback(callback)
+    StaticEvent(unsigned long interval, Callback callback, int repeatCount) : BaseEvent(interval, repeatCount), callback(callback)
     {
-        this->interval = interval;
+        
     }
 
     void executeCallback()
