@@ -17,56 +17,56 @@
  */
 
 /** Globals */
-#include "../Support/helpers.h"
+#include "../Support/helpers.hpp"
 
 /** Contracts */
-#include "../Contracts/Foundation/LoggerContract.h"
-#include "../Contracts/Support/Facades/Scheduler/EventContract.h"
-#include "../Contracts/Foundation/BoardContract.h"
-#include "../Contracts/Gateways/GatewayContract.h"
-#include "../Contracts/Sensors/DriverContract.h"
-#include "../Contracts/Sensors/SensorContract.h"
-#include "../Contracts/Devices/DriverContract.h"
-#include "../Contracts/Devices/DeviceContract.h"
-#include "../Contracts/Collections/CollectionContract.h"
+#include "../Contracts/Foundation/LoggerContract.hpp"
+#include "../Contracts/Support/Facades/Scheduler/EventContract.hpp"
+#include "../Contracts/Foundation/BoardContract.hpp"
+#include "../Contracts/Gateways/GatewayContract.hpp"
+#include "../Contracts/Sensors/DriverContract.hpp"
+#include "../Contracts/Sensors/SensorContract.hpp"
+#include "../Contracts/Devices/DriverContract.hpp"
+#include "../Contracts/Devices/DeviceContract.hpp"
+#include "../Contracts/Collections/CollectionContract.hpp"
 
 /** Collections */
-#include "../Collections/Collection.h"
-#include "../Collections/SimpleVector.h"
-#include "../Collections/Vector.h"
+#include "../Collections/Collection.hpp"
+#include "../Collections/SimpleVector.hpp"
+#include "../Collections/Vector.hpp"
 
  /** Traits */
-#include "../Traits/HasNotification.h"
-#include "../Traits/HasLogger.h"
-#include "../Traits/HasId.h"
+#include "../Traits/HasNotification.hpp"
+#include "../Traits/HasLogger.hpp"
+#include "../Traits/HasId.hpp"
 
 /** Support */
-#include "../Support/Facades/Debug.h"
-#include "../Support/Facades/Fluid.h"
-#include "../Support/Facades/Scheduler/BaseEvent.h"
-#include "../Support/Facades/Scheduler/Event.h"
-#include "../Support/Facades/Scheduler/StaticEvent.h"
-#include "../Support/Facades/Scheduler/Scheduler.h"
-#include "../Support/Facades/Route.h"
+#include "../Support/Facades/Debug.hpp"
+#include "../Support/Facades/Fluid.hpp"
+#include "../Support/Facades/Scheduler/BaseEvent.hpp"
+#include "../Support/Facades/Scheduler/Event.hpp"
+#include "../Support/Facades/Scheduler/StaticEvent.hpp"
+#include "../Support/Facades/Scheduler/Scheduler.hpp"
+#include "../Support/Facades/Route.hpp"
 
 /** Gateways */
-#include "../Gateways/Esp8266/WifiHttpClient.h"
-#include "../Gateways/Esp8266/WifiWebServer.h"
+#include "../Gateways/Esp8266/WifiHttpClient.hpp"
+#include "../Gateways/Esp8266/WifiWebServer.hpp"
 
 /** Sensors */
-#include "../Sensors/Drivers/Driver.h"
-#include "../Sensors/Drivers/GenericDriver.h"
-#include "../Sensors/Sensor.h"
+#include "../Sensors/Drivers/Driver.hpp"
+#include "../Sensors/Drivers/GenericDriver.hpp"
+#include "../Sensors/Sensor.hpp"
 
 /** Devices */
-#include "../Devices/Drivers/Driver.h"
-#include "../Devices/Drivers/GenericDriver.h"
-#include "../Devices/Drivers/SinkModeDriver.h"
-#include "../Devices/Drivers/AirConditionerDriver.h"
-#include "../Devices/Device.h"
+#include "../Devices/Drivers/Driver.hpp"
+#include "../Devices/Drivers/GenericDriver.hpp"
+#include "../Devices/Drivers/SinkModeDriver.hpp"
+#include "../Devices/Drivers/AirConditionerDriver.hpp"
+#include "../Devices/Device.hpp"
 
 /** Foundation */
-#include "../Foundation/Logger.h"
-#include "../Foundation/Board.h"
-#include "../Foundation/BaseController.h"
-#include "../Foundation/Application.h"
+#include "../Foundation/Logger.hpp"
+#include "../Foundation/Board.hpp"
+#include "../Foundation/BaseController.hpp"
+#include "../Foundation/Application.hpp"

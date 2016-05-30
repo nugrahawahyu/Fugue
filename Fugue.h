@@ -18,7 +18,7 @@
 
 /** Vendor Libraries */
 #include "vendor/vendor.h"
-#include "config/kernel.h"
+#include "config/kernel.hpp"
 
 /** App */
 #include "app/Header/app.h"

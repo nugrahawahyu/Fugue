@@ -14,7 +14,7 @@ public:
 
     void behavior()
     {
-        Debug::println("Hello this is LED parent!");
+
     }
 };
 

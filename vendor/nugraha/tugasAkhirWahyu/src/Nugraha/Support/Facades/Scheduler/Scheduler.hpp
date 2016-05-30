@@ -16,22 +16,16 @@ public:
     static void handleEvents()
     {
         if(init) {
-            after(1, [=](){});
+            after(1, [=](){Serial.println();});
             init = false;
         }
 
         for(auto event = eventCollection->getMembers().begin(); event != eventCollection->getMembers().end();) {
             (*event)->update(millis());
             if((*event)->getRepeatCount() == 0) {
-                Serial.println(eventCollection->count());
-                Serial.println("Habis, Deleting Event...");
-                Serial.printf("getFreeHeap: %08d\n", ESP.getFreeHeap());
                 delete *event;
                 *event = NULL;
                 event = eventCollection->getMembers().erase(event);
-                Serial.printf("getFreeHeap: %08d\n", ESP.getFreeHeap());
-                Serial.println("Event berhasil di delete!!!!!!!!!");
-                Serial.println(eventCollection->count());
             } else {
                 ++event;
             }

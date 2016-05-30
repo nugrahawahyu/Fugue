@@ -8,33 +8,38 @@
 #include <ESP8266mDNS.h>
 #include <vector>
 #include <map>
+#include <ESP8266Ping.h>
 
 /** Main app libraries */
-#include "../Fugue.h"
+#include "../Fugue.hpp"
 
 /** Test Cases */
 #ifdef _FreeMemoryTest
-#include "TestCases/FreeMemoryTest.h"
+#include "TestCases/FreeMemoryTest.hpp
 #endif
 
 #ifdef _SchedulerTest
-#include "TestCases/SchedulerTest.h"
+#include "TestCases/SchedulerTest.hpp
 #endif
 
 #ifdef _JsonTest
-#include "TestCases/JsonTest.h"
+#include "TestCases/JsonTest.hpp
 #endif
 
 #ifdef _UserCommandExecutorTest
-#include "TestCases/UserCommandExecutorTest.h"
+#include "TestCases/UserCommandExecutorTest.hpp
 #endif
 
 #ifdef _SignalStrengthTest
-#include "TestCases/SignalStrengthTest.h"
+#include "TestCases/SignalStrengthTest.hpp
 #endif
 
 #ifdef _VectorOfObjectTest
-#include "TestCases/VectorOfObjectTest.h"
+#include "TestCases/VectorOfObjectTest.hpp
+#endif
+
+#ifdef _PingTest
+#include "TestCases/PingTest.hpp
 #endif
 
 namespace Tests { namespace TestCases {} }
