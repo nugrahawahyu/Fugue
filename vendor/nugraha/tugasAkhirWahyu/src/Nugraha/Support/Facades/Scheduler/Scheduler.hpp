@@ -2,7 +2,7 @@ namespace Nugraha { namespace Support { namespace Facades { namespace Scheduler 
 using Nugraha::Collections::Collection;
 using Nugraha::Contracts::Collections::CollectionContract;
 
-class Scheduler 
+class Scheduler
 {
 protected:
     static CollectionContract<BaseEvent*>* eventCollection;

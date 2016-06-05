@@ -11,36 +11,10 @@
 #include <ESP8266Ping.h>
 
 /** Main app libraries */
-#include "../Fugue.hpp"
+#include "../Fugue.h"
 
 /** Test Cases */
-#ifdef _FreeMemoryTest
-#include "TestCases/FreeMemoryTest.hpp
-#endif
-
-#ifdef _SchedulerTest
-#include "TestCases/SchedulerTest.hpp
-#endif
-
-#ifdef _JsonTest
-#include "TestCases/JsonTest.hpp
-#endif
-
-#ifdef _UserCommandExecutorTest
-#include "TestCases/UserCommandExecutorTest.hpp
-#endif
-
-#ifdef _SignalStrengthTest
-#include "TestCases/SignalStrengthTest.hpp
-#endif
-
-#ifdef _VectorOfObjectTest
-#include "TestCases/VectorOfObjectTest.hpp
-#endif
-
-#ifdef _PingTest
-#include "TestCases/PingTest.hpp
-#endif
+#include "TestCases/header/TestCases.h"
 
 namespace Tests { namespace TestCases {} }
 using namespace Nugraha::Devices;

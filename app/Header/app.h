@@ -4,6 +4,7 @@ using Nugraha::Support::Facades::Route;
 using Nugraha::Support::Facades::Scheduler::Scheduler;
 
 /** Devices */
+#include "../Devices/Lampu.hpp"
 #include "../Devices/Led.hpp"
 #include "../Devices/BlinkingLed.hpp"
 #include "../Devices/AirConditioner.hpp"

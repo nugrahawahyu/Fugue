@@ -1,4 +1,4 @@
-#define _PingTest
+#define _AllTests
 #include "tests.h"
 using namespace App::Boards;
 using namespace Tests::TestCases;

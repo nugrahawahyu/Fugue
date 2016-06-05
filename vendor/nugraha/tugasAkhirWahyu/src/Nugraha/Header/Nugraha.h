@@ -32,7 +32,6 @@
 
 /** Collections */
 #include "../Collections/Collection.hpp"
-#include "../Collections/SimpleVector.hpp"
 #include "../Collections/Vector.hpp"
 
  /** Traits */
