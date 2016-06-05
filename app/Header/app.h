@@ -4,15 +4,16 @@ using Nugraha::Support::Facades::Route;
 using Nugraha::Support::Facades::Scheduler::Scheduler;
 
 /** Devices */
-#include "../Devices/Led.h"
-#include "../Devices/BlinkingLed.h"
-#include "../Devices/AirConditioner.h"
+#include "../Devices/Lampu.hpp"
+#include "../Devices/Led.hpp"
+#include "../Devices/BlinkingLed.hpp"
+#include "../Devices/AirConditioner.hpp"
 
 /** Gateways */
-#include "../Gateways/HTTPClients/PersistentHttp.h"
-#include "../Gateways/HTTPClients/NonPersistentHttp.h"
-#include "../Gateways/WebServer/Server.h"
+#include "../Gateways/HTTPClients/PersistentHttp.hpp"
+#include "../Gateways/HTTPClients/NonPersistentHttp.hpp"
+#include "../Gateways/WebServer/Server.hpp"
 
 /** Boards */
-#include "../Boards/Arduino.h"
-#include "../Boards/WemosD1.h"
+#include "../Boards/Arduino.hpp"
+#include "../Boards/WemosD1.hpp"

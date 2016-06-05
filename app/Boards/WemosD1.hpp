@@ -24,10 +24,10 @@ protected:
 
     void devices()
     {
-        this->attachDevice(new Led(D2, NULL));
-        this->attachDevice(new Led(D3, NULL));
-        this->attachDevice(new Led(D4, NULL));
-        this->attachDevice(new Led(D5, NULL));
+        this->attachDevice(new Lampu(D2, NULL));
+        this->attachDevice(new Lampu(D3, NULL));
+        this->attachDevice(new Lampu(D4, NULL));
+        this->attachDevice(new Lampu(D5, NULL));
         this->attachDevice(new AirConditioner(D6, NULL));
         this->attachDevice(new Led(BUILTIN_LED, NULL));
     }

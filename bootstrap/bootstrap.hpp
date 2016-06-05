@@ -6,7 +6,7 @@ using namespace App::Boards;
 using Nugraha::Foundation::Application;
 using Nugraha::Contracts::Devices::DriverContract;
 
-#include "../config/application.h"
+#include "../config/application.hpp"
 
 void printBootMessage()
 {

@@ -8,34 +8,13 @@
 #include <ESP8266mDNS.h>
 #include <vector>
 #include <map>
+#include <ESP8266Ping.h>
 
 /** Main app libraries */
 #include "../Fugue.h"
 
 /** Test Cases */
-#ifdef _FreeMemoryTest
-#include "TestCases/FreeMemoryTest.h"
-#endif
-
-#ifdef _SchedulerTest
-#include "TestCases/SchedulerTest.h"
-#endif
-
-#ifdef _JsonTest
-#include "TestCases/JsonTest.h"
-#endif
-
-#ifdef _UserCommandExecutorTest
-#include "TestCases/UserCommandExecutorTest.h"
-#endif
-
-#ifdef _SignalStrengthTest
-#include "TestCases/SignalStrengthTest.h"
-#endif
-
-#ifdef _VectorOfObjectTest
-#include "TestCases/VectorOfObjectTest.h"
-#endif
+#include "TestCases/header/TestCases.h"
 
 namespace Tests { namespace TestCases {} }
 using namespace Nugraha::Devices;

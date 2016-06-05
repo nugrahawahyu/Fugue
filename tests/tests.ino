@@ -1,12 +1,10 @@
-// #define _VectorOfObjectTest
-#define _SchedulerTest
+#define _AllTests
 #include "tests.h"
 using namespace App::Boards;
 using namespace Tests::TestCases;
 using Nugraha::Foundation::Application;
 
-Application* test = new Application(new SchedulerTest(), new WemosD1(), 115200, true);
-// Application* test = new Application(new VectorOfObjectTest(), new WemosD1(), 115200, true);
+Application* test = new Application(new PingTest(), new WemosD1(), 115200, true);
 
 void setup()
 {
