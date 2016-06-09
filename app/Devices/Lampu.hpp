@@ -10,6 +10,7 @@ public:
     void initialize()
     {
         pinMode(this->pin, OUTPUT);
+        this->turnOff();
     }
 
     void behavior()

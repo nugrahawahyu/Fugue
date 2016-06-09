@@ -79,6 +79,11 @@ public:
         this->sensor = sensor;
     }
 
+    SensorContract* getSensor()
+    {
+        return this->sensor;
+    }
+
     void setDriver(DriverContract* driver)
     {
         this->driver = driver;

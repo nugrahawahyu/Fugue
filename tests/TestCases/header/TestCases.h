@@ -26,3 +26,7 @@
 #if defined(_PingTest) || defined(_AllTests)
 #include "TestCases/PingTest.hpp"
 #endif
+
+#if defined(_PirTest) || defined(_AllTests)
+#include "TestCases/PirTest.hpp"
+#endif

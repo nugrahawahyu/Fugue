@@ -28,6 +28,7 @@ protected:
         /** Inisialisasi setiap Device. */
         for(int i=0; i<devicesCollection->count(); i++) {
             if(devicesCollection->getMemberAt(i) != NULL) {
+                devicesCollection->getMemberAt(i)->setLogger(logger);
                 devicesCollection->getMemberAt(i)->initialize();
             }
         }
@@ -56,7 +57,6 @@ public:
         for(int i=0; i<devicesCollection->count(); i++) {
             if(devicesCollection->getMemberAt(i) != NULL) {
                 devicesCollection->getMemberAt(i)->behavior();
-                devicesCollection->getMemberAt(i)->setLogger(logger);
             }
         }
         

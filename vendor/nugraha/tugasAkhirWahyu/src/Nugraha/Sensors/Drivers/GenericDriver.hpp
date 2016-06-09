@@ -5,9 +5,9 @@ class GenericDriver : public virtual Driver
 protected:
 
 public:
-    void readMeasurementValue(int pin)
+    double readMeasurementValue(int pin)
     {
-
+        return digitalRead(pin);
     }
 };
 

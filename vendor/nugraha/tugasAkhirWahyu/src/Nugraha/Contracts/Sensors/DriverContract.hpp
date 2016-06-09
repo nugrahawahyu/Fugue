@@ -4,7 +4,7 @@ class DriverContract
 {
 public:
     virtual ~DriverContract() {}
-    virtual void readMeasurementValue(int pin)=0;
+    virtual double readMeasurementValue(int pin)=0;
 };
 
 }}}

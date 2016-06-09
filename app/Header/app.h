@@ -3,8 +3,12 @@ using Nugraha::Support::Facades::Fluid;
 using Nugraha::Support::Facades::Route;
 using Nugraha::Support::Facades::Scheduler::Scheduler;
 
+/** Sensors */
+#include "../Sensors/PirSensor.hpp"
+
 /** Devices */
 #include "../Devices/Lampu.hpp"
+#include "../Devices/LampuPir.hpp"
 #include "../Devices/Led.hpp"
 #include "../Devices/BlinkingLed.hpp"
 #include "../Devices/AirConditioner.hpp"
