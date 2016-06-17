@@ -52,7 +52,11 @@ public:
             delay(1000);
         }
 
-        WiFiMulti.addAP("Fugue2", "fugue123");
+        char ssidCharArray[ssid.length()+1];
+        ssid.toCharArray(ssidCharArray, ssid.length()+1);
+        char passwordCharArray[password.length()+1];
+        password.toCharArray(passwordCharArray, password.length()+1);
+        WiFiMulti.addAP(ssidCharArray, passwordCharArray);
     }
 
     String generateUri()

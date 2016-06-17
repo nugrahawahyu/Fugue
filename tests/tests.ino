@@ -1,7 +1,7 @@
 #define _AllTests
 #include "tests.h"
 using namespace App::Boards;
-using namespace Tests::TestCases;
+using namespace Tests::TestCases;z
 using Nugraha::Foundation::Application;
 
 Application* test = new Application(new PingTest(), new WemosD1(), 115200, true);
