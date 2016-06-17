@@ -75,7 +75,7 @@ public:
         if((WiFiMulti.run() == WL_CONNECTED)) {
             unsigned long tempMillis = millis();
             http.begin(uri);
-            http.begin("192.168.1.12", 80, "/test.html");
+            // http.begin("192.168.1.12", 80, "/test.html");
 
             int httpCode = http.GET();
             if(httpCode > 0) {
