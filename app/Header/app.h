@@ -13,10 +13,10 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 #include "../Devices/BlinkingLed.hpp"
 #include "../Devices/AirConditioner.hpp"
 
-/** Gateways */
-#include "../Gateways/HTTPClients/PersistentHttp.hpp"
-#include "../Gateways/HTTPClients/NonPersistentHttp.hpp"
-#include "../Gateways/WebServer/Server.hpp"
+/** Services */
+#include "../Services/HTTPClients/PersistentHttp.hpp"
+#include "../Services/HTTPClients/NonPersistentHttp.hpp"
+#include "../Services/WebServer/Server.hpp"
 
 /** Boards */
 #include "../Board/Board.hpp"
