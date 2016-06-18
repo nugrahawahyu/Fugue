@@ -8,7 +8,7 @@ public:
 
     void service()
     {
-        Debug::println("Memulai service koneksi HTTP Persistent...");
+        Debug::println(F("Memulai service koneksi HTTP Persistent..."));
 
         interval = 0;
         http.setReuse(true);

@@ -23,45 +23,19 @@ public:
         }
     }
 
-    static void println(const __FlashStringHelper* message)
+    template<typename Type>
+    static void println(Type message)
     {
         if(Debug::isDebugMode) {
             Serial.println(message);
         }
     }
 
-    static void println(char* message)
-    {
-        if(Debug::isDebugMode) {
-            Serial.println(message);
-        }
-    }
-
-    static void println(int message)
-    {
-        if(Debug::isDebugMode) {
-            Serial.println(String(message));
-        }
-    }
-
-    static void print(const __FlashStringHelper* message)
+    template<typename Type>
+    static void print(Type message)
     {
         if(Debug::isDebugMode) {
             Serial.print(message);
-        }
-    }
-
-    static void print(char* message)
-    {
-        if(Debug::isDebugMode) {
-            Serial.print(message);
-        }
-    }
-
-    static void print(int message)
-    {
-        if(Debug::isDebugMode) {
-            Serial.print(String(message));
         }
     }
 };
