@@ -19,4 +19,4 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 #include "../Gateways/WebServer/Server.hpp"
 
 /** Boards */
-#include "../Boards/WemosD1.hpp"
+#include "../Boards/Board.hpp"

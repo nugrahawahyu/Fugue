@@ -5,7 +5,7 @@ using Nugraha::Foundation::BoardKernel;
 using App::Gateways::WebServer::Server;
 using namespace App::Gateways::HttpClients;
                 
-class WemosD1 : public virtual BoardKernel {
+class Board : public virtual BoardKernel {
 protected:
 
     void gateways()

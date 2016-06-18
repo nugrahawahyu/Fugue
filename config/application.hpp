@@ -3,7 +3,7 @@ Application* application = new Application(
     new Controller(),
 
     /** Board yang digunakan harus merupakan anak class Board. */
-    new WemosD1(),
+    new Board(),
 
     /** Serial Baud Rate */
     115200,
