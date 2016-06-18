@@ -47,7 +47,7 @@ public:
     {
         sensors();
         devices();
-        gateways();
+        services();
         initializeAll();
     }
 

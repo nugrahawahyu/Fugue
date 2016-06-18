@@ -8,7 +8,7 @@ using namespace App::Gateways::HttpClients;
 class Board : public virtual BoardKernel {
 protected:
 
-    void gateways()
+    void services()
     {
         // this->attachGateway(new Server());
         
