@@ -50,7 +50,7 @@ public:
         if(this->pin != -1) {
             if(driver->turnOn(this->pin)) {
                 this->isOn = true;
-                logger->addNotification(1, String(this->pin));
+                logger->addNotification(this->pin, true);
             }
         }
     }
@@ -64,7 +64,7 @@ public:
         if(this->pin != -1) {
             if(driver->turnOff(this->pin)) {
                 this->isOn = false;
-                logger->addNotification(0, String(this->pin));
+                logger->addNotification(this->pin, false);
             }
         }
     }

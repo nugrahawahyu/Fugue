@@ -3,95 +3,88 @@ using Nugraha::Contracts::Foundation::LoggerContract;
 
 class Logger : public LoggerContract {
 protected:
-    DynamicJsonBuffer* jsonBuffer = new DynamicJsonBuffer();
-    JsonObject* root = &jsonBuffer->createObject();
-    JsonArray* notifications = &root->createNestedArray("notifications");
-    JsonArray* measurements = &root->createNestedArray("measurements");
-    JsonArray* connectionInfos = &root->createNestedArray("connectionInfos");
+    DynamicJsonBuffer* jsonBuffer;
+    JsonObject* root;
+    JsonArray* data;
+    int count = 0;
+    std::map<String, JsonArray*> dataTypeContents;
 
-    bool sendBoardInfo = true;
-
-    void clean()
+    template<typename KeyType, typename ValueType>
+    void addRecord(String type, KeyType key, ValueType value)
     {
-        delete jsonBuffer;
-        jsonBuffer = NULL;
+        JsonArray* contents;
+
+        if(!isContentTypeExists(type)) {
+            JsonObject& contentRoot = data->createNestedObject();
+            contentRoot["type"] = type;
+            contents = &contentRoot.createNestedArray("contents");
+            dataTypeContents.insert(std::make_pair(type, contents));
+        } else {
+            contents = dataTypeContents[type];
+        }
+
+        JsonObject& item = contents->createNestedObject();
+        item["key"] = key;
+        item["value"] = value;
+        (*root)["count"] = ++count;
     }
 
-    void reInitializeJsonBuffer()
+    void initializeJsonBuffer()
     {
         jsonBuffer = new DynamicJsonBuffer();
         root = &jsonBuffer->createObject();
-        notifications = &root->createNestedArray("notifications");
-        measurements = &root->createNestedArray("measurements");
-        connectionInfos = &root->createNestedArray("connectionInfos");
+        (*root)["count"] = 0;
+        data = &root->createNestedArray("data");
     }
 
-    void addBoardInfoToRecord()
+    void clean()
     {
-        JsonObject& boardInfo = root->createNestedObject("boardInfo");
-        boardInfo["chipId"] = ESP.getChipId();
-        boardInfo["cpuFreqMHz"] = ESP.getCpuFreqMHz();
-        boardInfo["sdkVersion"] = ESP.getSdkVersion();
-        boardInfo["bootVersion"] = ESP.getBootVersion();
-        boardInfo["bootMode"] = ESP.getBootMode();
-        boardInfo["cycleCount"] = ESP.getCycleCount();
-        boardInfo["freeHeap"] = ESP.getFreeHeap();
-        boardInfo["sketchSize"] = ESP.getSketchSize();
-        boardInfo["freeSketchSpace"] = ESP.getFreeSketchSpace();
+        delete [] jsonBuffer;
+        jsonBuffer = NULL;
+    }
+
+    bool isContentTypeExists(String type)
+    {
+        if ( dataTypeContents.find(type) == dataTypeContents.end() ) {
+          return false;
+        } 
+        return true;
     }
 
 public:
-    void addNotification(int code, String message)
+    Logger()
+    {
+        initializeJsonBuffer();
+    }
+
+    void addNotification(int pin, bool state)
     {
         if(jsonBuffer == NULL)
-            reInitializeJsonBuffer();
-        
-        String state;
-        switch(code) {
-        case 0 : 
-            state = "off";
-            break;
-        case 1 : 
-            state = "on";
-            break;
-        default : 
-            break;
-        }
-        JsonObject& notification = notifications->createNestedObject();
-        notification["pin"] = message;
-        notification["state"] = state;
+            initializeJsonBuffer();
+        addRecord("Notification", pin, state);
     }
 
     void addConnectionInfo(String parameter, String value)
     {
         if(jsonBuffer == NULL)
-            reInitializeJsonBuffer();
-
-        JsonObject& connectionInfo = connectionInfos->createNestedObject();
-        connectionInfo["parameter"] = parameter;
-        connectionInfo["value"] = value;
+            initializeJsonBuffer();
+        addRecord("ConnectionInfo", parameter, value);
     }
 
-    void addSensorMeasurement(String sensorName, String measurementValue)
+    void addSensorMeasurement(String sensorName, double measurementValue)
     {
         if(jsonBuffer == NULL)
-            reInitializeJsonBuffer();
-
-        JsonObject& measurement = measurements->createNestedObject();
-        measurement["sensor"] = sensorName;
-        measurement["value"] = measurementValue;
+            initializeJsonBuffer();
+        addRecord("Measurement", sensorName, measurementValue);
     }
 
     String getLogMessage()
     {
         if(jsonBuffer != NULL) {
-            if(sendBoardInfo) {
-                addBoardInfoToRecord();
-            }
             String logMessages;
             root->printTo(logMessages);
             clean();
-            reInitializeJsonBuffer();
+            initializeJsonBuffer();
             return logMessages;
         } else {
             return "{\"records\":[]}";
@@ -101,15 +94,11 @@ public:
     void printToSerial()
     {
         if(jsonBuffer != NULL) {
-            if(sendBoardInfo) {
-                addBoardInfoToRecord();
-            }
             root->prettyPrintTo(Serial);
         }
         else
             Serial.println("NULL");
     }
-
 };
 
 }}
