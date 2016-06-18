@@ -8,7 +8,7 @@ using Nugraha::Contracts::Foundation::BoardContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 using Nugraha::Contracts::Collections::CollectionContract;
 
-class Board : public virtual BoardContract, public HasLogger
+class BoardKernel : public virtual BoardContract, public HasLogger
 {  
 protected:
     CollectionContract<DeviceContract*>* devicesCollection;
@@ -35,7 +35,7 @@ protected:
     }
     
 public:
-    Board()
+    BoardKernel()
     {
         devicesCollection = new Vector<DeviceContract*>();
         sensorsCollection = new Vector<SensorContract*>();
@@ -129,7 +129,7 @@ public:
         return NULL;
     }
 
-    ~Board()
+    ~BoardKernel()
     {
         delete gatewaysCollection;
         delete devicesCollection;

@@ -66,6 +66,6 @@
 
 /** Foundation */
 #include "../Foundation/Logger.hpp"
-#include "../Foundation/Board.hpp"
+#include "../Foundation/BoardKernel.hpp"
 #include "../Foundation/BaseController.hpp"
 #include "../Foundation/Application.hpp"

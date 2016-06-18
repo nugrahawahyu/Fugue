@@ -1,11 +1,11 @@
 namespace App { namespace Boards { 
 using namespace App::Devices;
 using namespace App::Sensors;
-using Nugraha::Foundation::Board;
+using Nugraha::Foundation::BoardKernel;
 using App::Gateways::WebServer::Server;
 using namespace App::Gateways::HttpClients;
                 
-class WemosD1 : public virtual Board {
+class WemosD1 : public virtual BoardKernel {
 protected:
 
     void gateways()
