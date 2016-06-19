@@ -1,7 +1,7 @@
 namespace Nugraha { namespace Foundation {
 using Nugraha::Contracts::Foundation::BoardContract;
 
-class BaseController 
+class BaseController
 {
 public:
     BoardContract* board;
