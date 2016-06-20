@@ -1,5 +1,5 @@
-namespace App { namespace Gateways { namespace WebServer {
-using Nugraha::Gateways::Esp8266::WifiWebServer;
+namespace App { namespace Services { namespace WebServer {
+using Nugraha::Services::Esp8266::WifiWebServer;
 
 class Server : public virtual WifiWebServer
 {

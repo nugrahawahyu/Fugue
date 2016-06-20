@@ -1,5 +1,5 @@
-namespace App { namespace Gateways { namespace HttpClients {
-using Nugraha::Gateways::Esp8266::WifiHttpClient;
+namespace App { namespace Services { namespace HttpClients {
+using Nugraha::Services::Esp8266::WifiHttpClient;
 
 class NonPersistentHttp : public virtual WifiHttpClient
 {

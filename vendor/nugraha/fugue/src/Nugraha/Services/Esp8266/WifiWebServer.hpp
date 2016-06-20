@@ -1,9 +1,9 @@
-namespace Nugraha { namespace Gateways { namespace Esp8266 {
+namespace Nugraha { namespace Services { namespace Esp8266 {
 using Nugraha::Traits::HasLogger;
-using Nugraha::Contracts::Gateways::GatewayContract;
+using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 
-class WifiWebServer : public virtual GatewayContract, public HasLogger
+class WifiWebServer : public virtual ServiceContract, public HasLogger
 {
 protected:
     String message;

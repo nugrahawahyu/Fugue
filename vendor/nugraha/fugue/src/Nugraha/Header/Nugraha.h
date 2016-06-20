@@ -23,7 +23,7 @@
 #include "../Contracts/Foundation/LoggerContract.hpp"
 #include "../Contracts/Support/Facades/Scheduler/EventContract.hpp"
 #include "../Contracts/Foundation/BoardContract.hpp"
-#include "../Contracts/Gateways/GatewayContract.hpp"
+#include "../Contracts/Services/ServiceContract.hpp"
 #include "../Contracts/Sensors/DriverContract.hpp"
 #include "../Contracts/Sensors/SensorContract.hpp"
 #include "../Contracts/Devices/DriverContract.hpp"
@@ -48,9 +48,9 @@
 #include "../Support/Facades/Scheduler/Scheduler.hpp"
 #include "../Support/Facades/Route.hpp"
 
-/** Gateways */
-#include "../Gateways/Esp8266/WifiHttpClient.hpp"
-#include "../Gateways/Esp8266/WifiWebServer.hpp"
+/** Services */
+#include "../Services/Esp8266/WifiHttpClient.hpp"
+#include "../Services/Esp8266/WifiWebServer.hpp"
 
 /** Sensors */
 #include "../Sensors/Drivers/Driver.hpp"

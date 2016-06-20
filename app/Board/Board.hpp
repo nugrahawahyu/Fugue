@@ -2,8 +2,8 @@ namespace App { namespace Boards {
 using namespace App::Devices;
 using namespace App::Sensors;
 using Nugraha::Foundation::BoardKernel;
-using App::Gateways::WebServer::Server;
-using namespace App::Gateways::HttpClients;
+using App::Services::WebServer::Server;
+using namespace App::Services::HttpClients;
                 
 class Board : public virtual BoardKernel {
 protected:

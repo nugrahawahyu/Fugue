@@ -3,7 +3,7 @@ using Nugraha::Traits::HasLogger;
 using Nugraha::Collections::Vector;
 using Nugraha::Contracts::Devices::DeviceContract;
 using Nugraha::Contracts::Sensors::SensorContract;
-using Nugraha::Contracts::Gateways::GatewayContract;
+using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::BoardContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 using Nugraha::Contracts::Collections::CollectionContract;
@@ -13,7 +13,7 @@ class BoardKernel : public virtual BoardContract, public HasLogger
 protected:
     CollectionContract<DeviceContract*>* devicesCollection;
     CollectionContract<SensorContract*>* sensorsCollection;
-    CollectionContract<GatewayContract*>* gatewaysCollection;
+    CollectionContract<ServiceContract*>* servicesCollection;
     DeviceContract* Default = NULL;
 
     void initializeAll()
@@ -31,7 +31,7 @@ public:
     {
         devicesCollection = new Vector<DeviceContract*>();
         sensorsCollection = new Vector<SensorContract*>();
-        gatewaysCollection = new Vector<GatewayContract*>();
+        servicesCollection = new Vector<ServiceContract*>();
         setLogger(new Logger());
     }
 
@@ -53,11 +53,11 @@ public:
         }
         
         /** Jalankan service setiap Gateway. */
-        for(int i=0; i<gatewaysCollection->count(); i++) {
-            if(gatewaysCollection->getMemberAt(i) != NULL) {
-                gatewaysCollection->getMemberAt(i)->service();
-                gatewaysCollection->getMemberAt(i)->setLogger(logger);
-                gatewaysCollection->getMemberAt(i)->setBoard(this);
+        for(int i=0; i<servicesCollection->count(); i++) {
+            if(servicesCollection->getMemberAt(i) != NULL) {
+                servicesCollection->getMemberAt(i)->service();
+                servicesCollection->getMemberAt(i)->setLogger(logger);
+                servicesCollection->getMemberAt(i)->setBoard(this);
             }
         }
     }
@@ -72,9 +72,9 @@ public:
         sensorsCollection->add(sensor);
     }
 
-    void attachService(GatewayContract* gateway)
+    void attachService(ServiceContract* gateway)
     {
-        gatewaysCollection->add(gateway);
+        servicesCollection->add(gateway);
     }
 
     void executeUserCommand(String userCommands)
@@ -123,7 +123,7 @@ public:
 
     ~BoardKernel()
     {
-        delete gatewaysCollection;
+        delete servicesCollection;
         delete devicesCollection;
         delete sensorsCollection;
         delete logger;
