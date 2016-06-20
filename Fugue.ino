@@ -9,7 +9,7 @@
 namespace Main {
 using Nugraha::Foundation::BaseController;
 
-class Controller : public virtual BaseController
+class Controller : public BaseController
 {
 public:
     void setup()
