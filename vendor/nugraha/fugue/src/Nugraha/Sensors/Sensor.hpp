@@ -3,9 +3,9 @@ using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
 using Nugraha::Sensors::Drivers::Driver;
 using Nugraha::Sensors::Drivers::GenericDriver;
-using Nugraha::Contracts::Sensors::DriverContract;
 using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
+using Nugraha::Contracts::Drivers::Sensors::DriverContract;
 
 class Sensor : public virtual SensorContract, public HasLogger, public HasId
 {

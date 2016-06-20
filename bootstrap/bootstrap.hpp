@@ -4,7 +4,7 @@
 using namespace Main;
 using namespace App::Boards;
 using Nugraha::Foundation::Application;
-using Nugraha::Contracts::Devices::DriverContract;
+using Nugraha::Contracts::Drivers::Devices::DriverContract;
 
 #include "../config/application.hpp"
 

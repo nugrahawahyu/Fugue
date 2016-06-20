@@ -3,9 +3,9 @@ using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
 using Nugraha::Support::Facades::Debug;
 using Nugraha::Contracts::Sensors::SensorContract;
-using Nugraha::Contracts::Devices::DriverContract;
 using Nugraha::Contracts::Devices::DeviceContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
+using Nugraha::Contracts::Drivers::Devices::DriverContract;
 
 class Device : public virtual DeviceContract, public HasLogger, public HasId
 {

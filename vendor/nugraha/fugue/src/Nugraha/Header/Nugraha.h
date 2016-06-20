@@ -24,9 +24,9 @@
 #include "../Contracts/Support/Facades/Scheduler/EventContract.hpp"
 #include "../Contracts/Foundation/BoardContract.hpp"
 #include "../Contracts/Services/ServiceContract.hpp"
-#include "../Contracts/Sensors/DriverContract.hpp"
+#include "../Contracts/Drivers/Sensors/DriverContract.hpp"
 #include "../Contracts/Sensors/SensorContract.hpp"
-#include "../Contracts/Devices/DriverContract.hpp"
+#include "../Contracts/Drivers/Devices/DriverContract.hpp"
 #include "../Contracts/Devices/DeviceContract.hpp"
 #include "../Contracts/Collections/CollectionContract.hpp"
 
