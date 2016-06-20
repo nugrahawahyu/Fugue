@@ -48,20 +48,24 @@
 #include "../Support/Facades/Scheduler/Scheduler.hpp"
 #include "../Support/Facades/Route.hpp"
 
+/** Drivers/Sensors */
+#include "../Drivers/Sensors/Driver.hpp"
+#include "../Drivers/Sensors/GenericDriver.hpp"
+
+/** Drivers/Devices */
+#include "../Drivers/Devices/Driver.hpp"
+#include "../Drivers/Devices/GenericDriver.hpp"
+#include "../Drivers/Devices/SinkModeDriver.hpp"
+#include "../Drivers/Devices/AirConditionerDriver.hpp"
+
 /** Services */
 #include "../Services/Esp8266/WifiHttpClient.hpp"
 #include "../Services/Esp8266/WifiWebServer.hpp"
 
 /** Sensors */
-#include "../Sensors/Drivers/Driver.hpp"
-#include "../Sensors/Drivers/GenericDriver.hpp"
 #include "../Sensors/Sensor.hpp"
 
 /** Devices */
-#include "../Devices/Drivers/Driver.hpp"
-#include "../Devices/Drivers/GenericDriver.hpp"
-#include "../Devices/Drivers/SinkModeDriver.hpp"
-#include "../Devices/Drivers/AirConditionerDriver.hpp"
 #include "../Devices/Device.hpp"
 
 /** Foundation */
