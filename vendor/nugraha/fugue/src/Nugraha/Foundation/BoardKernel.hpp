@@ -80,7 +80,7 @@ public:
         sensorsCollection->add(sensor);
     }
 
-    void attachGateway(GatewayContract* gateway)
+    void attachService(GatewayContract* gateway)
     {
         gatewaysCollection->add(gateway);
     }

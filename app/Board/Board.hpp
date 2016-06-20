@@ -10,9 +10,9 @@ protected:
 
     void services()
     {
-        // this->attachGateway(new Server());
+        // this->attachService(new Server());
         
-        this->attachGateway(new PersistentHttp(std::map<String, String>({
+        this->attachService(new PersistentHttp(std::map<String, String>({
             { "host"         , env::httpClient::host },
             { "mode"         , env::httpClient::mode },
             { "publishKey"   , env::httpClient::publishKey },
