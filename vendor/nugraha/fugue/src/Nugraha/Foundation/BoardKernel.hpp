@@ -98,7 +98,7 @@ public:
         for(int i=0; i<root["commands"].size(); i++) {
             int pin = root["commands"][i]["pin"];
             String action = root["commands"][i]["action"];
-            
+
             if(action=="turnOn") {
                 if((device=getDeviceByPin(pin)) != NULL) {
                     device->turnOn();
