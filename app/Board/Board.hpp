@@ -10,8 +10,6 @@ protected:
 
     void services()
     {
-        // this->attachService(new Server());
-        
         this->attachService(new PersistentHttp(std::map<String, String>({
             { "host"         , env::httpClient::host },
             { "mode"         , env::httpClient::mode },
