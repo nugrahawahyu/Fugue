@@ -18,18 +18,10 @@ protected:
 
     void initializeAll()
     {
-        /** Inisialisasi setiap Gateway. */
-        for(int i=0; i<gatewaysCollection->count(); i++) {
-            if(gatewaysCollection->getMemberAt(i) != NULL) {
-                gatewaysCollection->getMemberAt(i)->initialize();
-            }
-        }
-
         /** Inisialisasi setiap Device. */
         for(int i=0; i<devicesCollection->count(); i++) {
             if(devicesCollection->getMemberAt(i) != NULL) {
                 devicesCollection->getMemberAt(i)->setLogger(logger);
-                devicesCollection->getMemberAt(i)->initialize();
             }
         }
     }

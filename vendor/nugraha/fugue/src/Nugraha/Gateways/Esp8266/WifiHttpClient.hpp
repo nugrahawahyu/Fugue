@@ -36,6 +36,7 @@ public:
         this->signature = setting["signature"];
         this->channelName = setting["channelName"];
         this->callback = setting["callback"];
+        initialize();
     }
 
     virtual ~WifiHttpClient() {}

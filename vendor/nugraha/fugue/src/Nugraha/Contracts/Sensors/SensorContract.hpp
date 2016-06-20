@@ -11,7 +11,6 @@ public:
      */
     virtual ~SensorContract() {}
     virtual int getId()=0;
-    virtual void initialize()=0;
     virtual double readMeasurementValue()=0;
     virtual void setLogger(LoggerContract* logger)=0;
     virtual LoggerContract* getLogger()=0;   

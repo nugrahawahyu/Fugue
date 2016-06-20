@@ -7,9 +7,7 @@ class LampuPir : public virtual Device
 public:
     int lastMeasurementValue = LOW;
 
-    LampuPir(int pin, Sensor* sensor) : Device(pin, sensor) {}
-
-    void initialize()
+    LampuPir(int pin, Sensor* sensor) : Device(pin, sensor)
     {
         pinMode(this->pin, OUTPUT);
         this->turnOff();

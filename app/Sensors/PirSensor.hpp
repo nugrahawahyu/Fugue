@@ -6,11 +6,6 @@ class PirSensor : public virtual Sensor
 public:    
     PirSensor(int pin) : Sensor(pin) 
     {
-        initialize();
-    }
-
-    void initialize()
-    {
         pinMode(this->pin, INPUT);
     }
 

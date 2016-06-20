@@ -5,9 +5,7 @@ using Nugraha::Devices::Device;
 class Led : public virtual Device
 {
 public:
-    Led(int pin, Sensor* sensor=NULL) : Device(pin, sensor) {}
-
-    void initialize()
+    Led(int pin, Sensor* sensor=NULL) : Device(pin, sensor)
     {
         pinMode(this->pin, OUTPUT);
     }

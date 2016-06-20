@@ -5,9 +5,7 @@ using Nugraha::Devices::Device;
 class Lampu : public virtual Device
 {
 public:
-    Lampu(int pin, Sensor* sensor=NULL) : Device(pin, sensor) {}
-
-    void initialize()
+    Lampu(int pin, Sensor* sensor=NULL) : Device(pin, sensor)
     {
         pinMode(this->pin, OUTPUT);
         this->turnOff();
