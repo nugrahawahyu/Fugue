@@ -10,14 +10,14 @@ public:
     {
         if(Debug::isDebugMode) {
             int currentFreeMemory = ESP.getFreeHeap();
-            Serial.print(F("Free heap="));
+            Serial.print(("Free heap="));
             Serial.print(currentFreeMemory);
 
-            Serial.print(F(" ["));
+            Serial.print((" ["));
             if(currentFreeMemory > Debug::lastFreeMemory)
-                Serial.print(F("+"));
+                Serial.print(("+"));
             Serial.print(currentFreeMemory - Debug::lastFreeMemory);
-            Serial.println(F("]"));
+            Serial.println(("]"));
 
             Debug::lastFreeMemory = currentFreeMemory;
         }
