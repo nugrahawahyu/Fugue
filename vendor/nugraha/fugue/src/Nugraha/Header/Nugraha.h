@@ -39,7 +39,7 @@
 #include "../Traits/HasLogger.hpp"
 #include "../Traits/HasId.hpp"
 
-/** Support */
+/** Support/Facades */
 #include "../Support/Facades/Debug.hpp"
 #include "../Support/Facades/Fluid.hpp"
 #include "../Support/Facades/Scheduler/BaseEvent.hpp"
@@ -47,6 +47,10 @@
 #include "../Support/Facades/Scheduler/StaticEvent.hpp"
 #include "../Support/Facades/Scheduler/Scheduler.hpp"
 #include "../Support/Facades/Route.hpp"
+using Nugraha::Support::Facades::Debug;
+using Nugraha::Support::Facades::Fluid;
+using Nugraha::Support::Facades::Route;
+using Nugraha::Support::Facades::Scheduler::Scheduler;
 
 /** Drivers/Sensors */
 #include "../Drivers/Sensors/Driver.hpp"
