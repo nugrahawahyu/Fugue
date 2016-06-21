@@ -104,7 +104,9 @@ public:
 
     void updateMessage()
     {
-        this->message = getLogger()->getLogMessage();
+        if(logger != NULL) {
+            this->message = logger->getLogMessage();
+        }
     }
     
     void setLogger(LoggerContract* logger) override

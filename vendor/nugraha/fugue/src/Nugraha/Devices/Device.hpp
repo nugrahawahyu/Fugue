@@ -50,7 +50,8 @@ public:
         if(this->pin != -1) {
             if(driver->turnOn(this->pin)) {
                 this->isOn = true;
-                logger->addNotification(this->pin, true);
+                if(logger != NULL )
+                    logger->addNotification(this->pin, true);
             }
         }
     }
@@ -64,7 +65,8 @@ public:
         if(this->pin != -1) {
             if(driver->turnOff(this->pin)) {
                 this->isOn = false;
-                logger->addNotification(this->pin, false);
+                if(logger != NULL )
+                    logger->addNotification(this->pin, false);
             }
         }
     }

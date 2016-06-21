@@ -4,7 +4,7 @@ using Nugraha::Contracts::Foundation::LoggerContract;
 class HasLogger
 {
 protected:
-    LoggerContract* logger;
+    LoggerContract* logger = NULL;
 
 public:
     virtual ~HasLogger() {}

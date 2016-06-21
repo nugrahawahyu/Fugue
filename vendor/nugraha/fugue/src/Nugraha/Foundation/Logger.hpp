@@ -39,7 +39,7 @@ protected:
 
     void clean()
     {
-        delete [] jsonBuffer;
+        delete jsonBuffer;
         jsonBuffer = NULL;
     }
 
@@ -87,6 +87,7 @@ public:
             initializeJsonBuffer();
             return logMessages;
         } else {
+            Debug::println(7);
             return "{\"records\":[]}";
         }
     }
