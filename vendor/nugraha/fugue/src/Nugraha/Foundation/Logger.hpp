@@ -12,7 +12,7 @@ protected:
     template<typename KeyType, typename ValueType>
     void addRecord(String type, KeyType key, ValueType value)
     {
-        JsonArray* contents;
+        JsonArray* contents = NULL;
 
         if(!isContentTypeExists(type)) {
             JsonObject& contentRoot = data->createNestedObject();
@@ -22,7 +22,6 @@ protected:
         } else {
             contents = dataTypeContents[type];
         }
-
         JsonObject& item = contents->createNestedObject();
         item["key"] = key;
         item["value"] = value;
@@ -39,6 +38,7 @@ protected:
 
     void clean()
     {
+        dataTypeContents.clear();
         delete jsonBuffer;
         jsonBuffer = NULL;
     }
@@ -87,7 +87,7 @@ public:
             initializeJsonBuffer();
             return logMessages;
         } else {
-            Debug::println(7);
+            clean();
             return "{\"records\":[]}";
         }
     }

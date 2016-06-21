@@ -90,7 +90,7 @@ public:
                     response = http.getString();
                     callback();
                 } else {
-                    addDelayToRecord(String(-1));
+                    addDelayToRecord(String(0));
                 }
             } else {
                 Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
