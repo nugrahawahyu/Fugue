@@ -9,25 +9,6 @@ protected:
     int count = 0;
     std::map<String, JsonArray*> dataTypeContents;
 
-    template<typename KeyType, typename ValueType>
-    void addRecord(String type, KeyType key, ValueType value)
-    {
-        JsonArray* contents = NULL;
-
-        if(!isContentTypeExists(type)) {
-            JsonObject& contentRoot = data->createNestedObject();
-            contentRoot["type"] = type;
-            contents = &contentRoot.createNestedArray("contents");
-            dataTypeContents.insert(std::make_pair(type, contents));
-        } else {
-            contents = dataTypeContents[type];
-        }
-        JsonObject& item = contents->createNestedObject();
-        item["key"] = key;
-        item["value"] = value;
-        (*root)["count"] = ++count;
-    }
-
     void initializeJsonBuffer()
     {
         jsonBuffer = new DynamicJsonBuffer();
@@ -51,31 +32,58 @@ protected:
         return true;
     }
 
+    void createNewContent(String type, JsonArray** contents)
+    {
+        JsonObject& contentRoot = data->createNestedObject();
+        contentRoot["type"] = type;
+        *contents = &contentRoot.createNestedArray("contents");
+        dataTypeContents.insert(std::make_pair(type, *contents));
+    }
+
 public:
     Logger()
     {
         initializeJsonBuffer();
     }
 
+    template<typename KeyType, typename ValueType>
+    void addRecord(String type, String keyName, KeyType key, String valueName, ValueType value)
+    {
+        JsonArray* contents = NULL;
+
+        if(!isContentTypeExists(type)) {
+            createNewContent(type, &contents);
+        } else {
+            contents = dataTypeContents[type];
+        }
+
+        JsonObject& item = contents->createNestedObject();
+        item["keyName"] = keyName;
+        item["key"] = key;
+        item["valueName"] = valueName;
+        item["value"] = value;
+        (*root)["count"] = ++count;
+    }
+
     void addNotification(int pin, bool state)
     {
         if(jsonBuffer == NULL)
             initializeJsonBuffer();
-        addRecord("Notification", pin, state);
+        addRecord("Notification", "pin", pin, "state", state);
     }
 
     void addConnectionInfo(String parameter, String value)
     {
         if(jsonBuffer == NULL)
             initializeJsonBuffer();
-        addRecord("ConnectionInfo", parameter, value);
+        addRecord("ConnectionInfo", "parameter", parameter, "value", value);
     }
 
     void addSensorMeasurement(String sensorName, double measurementValue)
     {
         if(jsonBuffer == NULL)
             initializeJsonBuffer();
-        addRecord("Measurement", sensorName, measurementValue);
+        addRecord("Measurement", "sensor", sensorName, "value", measurementValue);
     }
 
     String getLogMessage()
