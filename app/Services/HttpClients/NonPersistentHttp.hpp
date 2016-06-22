@@ -4,15 +4,15 @@ using Nugraha::Services::Esp8266::WifiHttpClient;
 class NonPersistentHttp : public virtual WifiHttpClient
 {
 public:
-    NonPersistentHttp(std::map<String, String> setting) : WifiHttpClient(setting) {}
+    NonPersistentHttp(std::map<String, String> setting) : WifiHttpClient(setting)
+    {
+        interval = 0;
+        http.setReuse(false);
+    }
 
     void service()
     {
         Debug::println(F("Memulai service koneksi HTTP Non-persistent..."));
-
-        interval = 0;
-        http.setReuse(false);
-
         Scheduler::every(interval, [=]() {
             updateMessage();
             httpGet(generateUri(), [=]() {
