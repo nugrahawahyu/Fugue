@@ -17,7 +17,7 @@
  */
 
 /** Globals */
-#include "../Support/helpers.hpp"
+#include "../Support/helpers/Scheduler.hpp"
 
 /** Contracts */
 #include "../Contracts/Foundation/LoggerContract.hpp"
@@ -38,6 +38,7 @@
 #include "../Traits/HasNotification.hpp"
 #include "../Traits/HasLogger.hpp"
 #include "../Traits/HasId.hpp"
+#include "../Traits/RecordableInstance.hpp"
 
 /** Support/Facades */
 #include "../Support/Facades/Debug.hpp"
