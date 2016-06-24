@@ -151,4 +151,4 @@ class JsonObject : public Internals::JsonPrintable<JsonObject>,
 };
 }
 
-#include "JsonObject.ipp"
+#include "JsonObject.cpp"

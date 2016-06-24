@@ -231,4 +231,4 @@ class JsonArray : public Internals::JsonPrintable<JsonArray>,
 };
 }
 
-#include "JsonArray.ipp"
+#include "JsonArray.cpp"

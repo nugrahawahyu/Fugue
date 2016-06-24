@@ -330,4 +330,4 @@ struct JsonVariant::IsConstructibleFrom {
 }
 
 // Include inline implementations
-#include "JsonVariant.ipp"
+#include "JsonVariant.cpp"
