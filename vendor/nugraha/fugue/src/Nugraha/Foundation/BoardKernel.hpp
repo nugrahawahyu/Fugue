@@ -7,14 +7,16 @@ using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::BoardContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 using Nugraha::Contracts::Collections::CollectionContract;
+using Nugraha::Devices::Device;
+using Nugraha::Sensors::Sensor;
 
 class BoardKernel : public virtual BoardContract, public HasLogger
 {  
 protected:
-    CollectionContract<DeviceContract*>* devicesCollection;
-    CollectionContract<SensorContract*>* sensorsCollection;
+    CollectionContract<Device*>* devicesCollection;
+    CollectionContract<Sensor*>* sensorsCollection;
     CollectionContract<ServiceContract*>* servicesCollection;
-    DeviceContract* Default = NULL;
+    Device* Default = NULL;
 
     void initializeAll()
     {
@@ -29,8 +31,8 @@ protected:
 public:
     BoardKernel()
     {
-        devicesCollection = new Vector<DeviceContract*>();
-        sensorsCollection = new Vector<SensorContract*>();
+        devicesCollection = new Vector<Device*>();
+        sensorsCollection = new Vector<Sensor*>();
         servicesCollection = new Vector<ServiceContract*>();
         setLogger(new Logger());
     }
@@ -62,12 +64,12 @@ public:
         }
     }
 
-    void attachDevice(DeviceContract* device)
+    void attachDevice(Device* device)
     {
         devicesCollection->add(device);
     }
 
-    void attachSensor(SensorContract* sensor)
+    void attachSensor(Sensor* sensor)
     {
         sensorsCollection->add(sensor);
     }
@@ -79,7 +81,7 @@ public:
 
     void executeUserCommand(String userCommands)
     {
-        DeviceContract* device;
+        Device* device;
         DynamicJsonBuffer jsonBuffer;
         JsonObject& root = jsonBuffer.parseObject(userCommands);
         if (!root.success()) {
@@ -107,9 +109,9 @@ public:
         }
     }
 
-    DeviceContract* getDeviceByPin(int pin)
+    Device* getDeviceByPin(int pin)
     {
-        DeviceContract* device;
+        Device* device;
         for(int i=0; i<devicesCollection->count(); i++) {
             device = devicesCollection->getMemberAt(i);
             if(device != NULL) {
