@@ -2,12 +2,13 @@ namespace Nugraha { namespace Devices {
 using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
 using Nugraha::Support::Facades::Debug;
+using Nugraha::Traits::RecordableInstance;
 using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Devices::DeviceContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 using Nugraha::Contracts::Drivers::Devices::DriverContract;
 
-class Device : public virtual DeviceContract, public HasLogger, public HasId
+class Device : public virtual DeviceContract, public HasLogger, public HasId<int>, public RecordableInstance<Device*>
 {
 protected:
     int pin = -1;
@@ -16,13 +17,14 @@ protected:
     DriverContract* driver;
     unsigned long previousMillis = 0;
     static DriverContract* defaultDriver;
-    
+
 public:
     Device(int pin, SensorContract* sensor)
     {
         this->pin = pin;
         this->sensor = sensor;
-        this->driver = Device::defaultDriver;
+        this->driver = defaultDriver;
+        myInstances.push_back(this);
     }
     
     virtual ~Device() {}
@@ -98,4 +100,5 @@ public:
     LoggerContract* getLogger() override {HasLogger::getLogger();}
 };
 
+// std::vector<DeviceContract*> Device::myInstances = std::vector<DeviceContract*>();
 }}
