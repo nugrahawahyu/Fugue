@@ -19,7 +19,6 @@ public:
             WiFi.config(env::wifi::ip, env::wifi::gateway, env::wifi::subnet, env::wifi::dns1, env::wifi::dns2);
         }
         board->initialize();
-        board->automate();
     }
 
     void loop()

@@ -43,6 +43,7 @@ public:
         devices();
         services();
         initializeAll();
+        automate();
     }
 
     void automate()
