@@ -2,7 +2,7 @@ namespace Nugraha { namespace Support { namespace Facades { namespace Scheduler 
 using Nugraha::Contracts::Support::Facades::Scheduler::EventContract;
 using Nugraha::Traits::HasId;
 
-class BaseEvent : public virtual EventContract, public virtual HasId
+class BaseEvent : public virtual EventContract, public virtual HasId<int>
 {
 protected:
     unsigned long interval;

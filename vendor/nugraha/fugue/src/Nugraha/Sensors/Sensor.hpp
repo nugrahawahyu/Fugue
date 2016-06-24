@@ -7,7 +7,7 @@ using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 using Nugraha::Contracts::Drivers::Sensors::DriverContract;
 
-class Sensor : public virtual SensorContract, public HasLogger, public HasId
+class Sensor : public virtual SensorContract, public HasLogger, public HasId<int>
 {
 protected:
     DriverContract* driver;

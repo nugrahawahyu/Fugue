@@ -1,6 +1,7 @@
 namespace Nugraha { namespace Traits {
 using Nugraha::Contracts::Foundation::LoggerContract;
 
+template<class T>
 class HasId
 {
 protected:
@@ -22,5 +23,6 @@ public:
     }
 };
 
-int HasId::ID = 0;
+template<class T>
+int HasId<T>::ID = 0;
 }}

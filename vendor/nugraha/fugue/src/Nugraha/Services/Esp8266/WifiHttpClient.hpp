@@ -5,7 +5,7 @@ using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::BoardContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 
-class WifiHttpClient : public virtual ServiceContract, public HasLogger, public HasId
+class WifiHttpClient : public virtual ServiceContract, public HasLogger, public HasId<int>
 {
 protected:
     ESP8266WiFiMulti WiFiMulti;
