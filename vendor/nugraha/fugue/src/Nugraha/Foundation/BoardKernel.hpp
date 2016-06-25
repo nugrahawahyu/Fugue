@@ -1,21 +1,18 @@
 namespace Nugraha { namespace Foundation {
-using Nugraha::Traits::HasLogger;
-using Nugraha::Collections::Vector;
-using Nugraha::Contracts::Devices::DeviceContract;
-using Nugraha::Contracts::Sensors::SensorContract;
-using Nugraha::Contracts::Services::ServiceContract;
-using Nugraha::Contracts::Foundation::BoardContract;
-using Nugraha::Contracts::Foundation::LoggerContract;
-using Nugraha::Contracts::Collections::CollectionContract;
 using Nugraha::Devices::Device;
 using Nugraha::Sensors::Sensor;
+using Nugraha::Services::Service;
+using Nugraha::Traits::HasLogger;
+using Nugraha::Collections::Vector;
+using Nugraha::Contracts::Foundation::BoardContract;
+using Nugraha::Contracts::Collections::CollectionContract;
 
 class BoardKernel : public virtual BoardContract, public HasLogger
 {  
 protected:
     CollectionContract<Device*>* devicesCollection;
     CollectionContract<Sensor*>* sensorsCollection;
-    CollectionContract<ServiceContract*>* servicesCollection;
+    CollectionContract<Service*>* servicesCollection;
     Device* Default = NULL;
 
     void initializeAll()
@@ -33,7 +30,7 @@ public:
     {
         devicesCollection = new Vector<Device*>();
         sensorsCollection = new Vector<Sensor*>();
-        servicesCollection = new Vector<ServiceContract*>();
+        servicesCollection = new Vector<Service*>();
         setLogger(new Logger());
     }
 
@@ -75,7 +72,7 @@ public:
         sensorsCollection->add(sensor);
     }
 
-    void attachService(ServiceContract* gateway)
+    void attachService(Service* gateway)
     {
         servicesCollection->add(gateway);
     }
