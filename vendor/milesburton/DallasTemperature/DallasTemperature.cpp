@@ -60,7 +60,7 @@ void DallasTemperature::begin(void){
 
             if (!parasite && readPowerSupply(deviceAddress)) parasite = true;
 
-            bitResolution = std::max(bitResolution, getResolution(deviceAddress));
+            bitResolution = max(bitResolution, getResolution(deviceAddress));
 
             devices++;
         }

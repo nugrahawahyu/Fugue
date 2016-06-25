@@ -19,7 +19,7 @@
 #endif
 
 #include <inttypes.h>
-// #include "D:\Code\MicrocontrollerProjects\Test\Test\libraries\DallasTemperature\src\DallasTemperature.h"
+#include "../../paulStoffregen/OneWire/OneWire.h"
 
 // Model IDs
 #define DS18S20MODEL 0x10  // also DS1820
@@ -57,6 +57,7 @@
 #define DEVICE_DISCONNECTED_C -127
 #define DEVICE_DISCONNECTED_F -196.6
 #define DEVICE_DISCONNECTED_RAW -7040
+#define max(a,b) ((a)>(b)?(a):(b))
 
 typedef uint8_t DeviceAddress[8];
 
