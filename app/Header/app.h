@@ -12,6 +12,7 @@
 #include "../Services/HTTPClients/PersistentHttp.hpp"
 #include "../Services/HTTPClients/NonPersistentHttp.hpp"
 #include "../Services/WebServer/Server.hpp"
+#include "../Services/TemperatureLogger.hpp"
 
 /** Boards */
 #include "../Board/Board.hpp"
