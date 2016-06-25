@@ -1,9 +1,10 @@
 namespace Nugraha { namespace Services { namespace Esp8266 {
 using Nugraha::Traits::HasLogger;
+using Nugraha::Services::Service;
 using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 
-class WifiWebServer : public virtual ServiceContract, public HasLogger
+class WifiWebServer : public virtual Service
 {
 protected:
     String message;
@@ -14,16 +15,6 @@ public:
     void setMessage(String message)
     {
         this->message = message;
-    }
-    
-    void setLogger(LoggerContract* logger) override
-    {
-        HasLogger::setLogger(logger);
-    }
-
-    LoggerContract* getLogger() override
-    {
-        HasLogger::getLogger();
     }
 };
 

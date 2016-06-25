@@ -1,16 +1,16 @@
 namespace Nugraha { namespace Services { namespace Esp8266 {
 using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
+using Nugraha::Services::Service;
 using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::BoardContract;
 using Nugraha::Contracts::Foundation::LoggerContract;
 
-class WifiHttpClient : public virtual ServiceContract, public HasLogger, public HasId<int>
+class WifiHttpClient : public virtual Service
 {
 protected:
     ESP8266WiFiMulti WiFiMulti;
     HTTPClient http;
-    BoardContract* board;
 
     String ssid            = env::wifi::ssid;
     String password        = env::wifi::password;
@@ -100,29 +100,11 @@ public:
         }
     }
 
-    int getId() override {HasId::getId();}
-
     void updateMessage()
     {
         if(logger != NULL) {
             this->message = logger->getLogMessage();
         }
-    }
-    
-    void setLogger(LoggerContract* logger) override
-    {
-        HasLogger::setLogger(logger);
-        addDelayToRecord(String(0));
-    }
-
-    LoggerContract* getLogger()
-    {
-        return logger;
-    }
-
-    void setBoard(BoardContract* board)
-    {
-        this->board = board;
     }
 
     void addDelayToRecord(String value)

@@ -64,6 +64,7 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 #include "../Drivers/Devices/AirConditionerDriver.hpp"
 
 /** Services */
+#include "../Services/Service.hpp"
 #include "../Services/Esp8266/WifiHttpClient.hpp"
 #include "../Services/Esp8266/WifiWebServer.hpp"
 
