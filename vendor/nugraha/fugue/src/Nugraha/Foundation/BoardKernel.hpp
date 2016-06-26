@@ -92,33 +92,19 @@ public:
             String action = root["commands"][i]["action"];
 
             if(action=="turnOn") {
-                if((device=getDeviceByPin(pin)) != NULL) {
+                if((device = Device::wherePin(pin)) != NULL) {
                     device->turnOn();
                 }
             } else if(action=="turnOff") {
-                if((device=getDeviceByPin(pin)) != NULL) {
+                if((device = Device::wherePin(pin)) != NULL) {
                     device->turnOff();
                 }
             } else if(action=="toggle") {
-                if((device=getDeviceByPin(pin)) != NULL) {
+                if((device = Device::wherePin(pin)) != NULL) {
                     device->toggle();
                 }
             }
         }
-    }
-
-    Device* getDeviceByPin(int pin)
-    {
-        Device* device;
-        for(int i=0; i<devicesCollection->count(); i++) {
-            device = devicesCollection->getMemberAt(i);
-            if(device != NULL) {
-                if(device->getPin() == pin) {
-                    return device;
-                }
-            }
-        }
-        return NULL;
     }
 
     ~BoardKernel()
