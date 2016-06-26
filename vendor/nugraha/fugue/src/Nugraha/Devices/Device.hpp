@@ -1,6 +1,7 @@
 namespace Nugraha { namespace Devices {
 using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
+using Nugraha::Foundation::Logger;
 using Nugraha::Traits::RecordableInstance;
 using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Devices::DeviceContract;
@@ -94,9 +95,9 @@ public:
 
     int getId() override {HasId::getId();}
     
-    void setLogger(LoggerContract* logger) override {HasLogger::setLogger(logger);}
+    void setLogger(Logger* logger) override {HasLogger::setLogger(logger);}
 
-    LoggerContract* getLogger() override {HasLogger::getLogger();}
+    Logger* getLogger() override {HasLogger::getLogger();}
 };
 
 // std::vector<DeviceContract*> Device::myInstances = std::vector<DeviceContract*>();

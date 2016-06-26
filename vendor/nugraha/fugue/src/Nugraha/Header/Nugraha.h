@@ -20,6 +20,7 @@
 #include "../Support/helpers/Scheduler.hpp"
 
 /** Contracts */
+ namespace Nugraha{namespace Foundation{class Logger;}}
 #include "../Contracts/Foundation/LoggerContract.hpp"
 #include "../Contracts/Support/Facades/Scheduler/EventContract.hpp"
 #include "../Contracts/Foundation/BoardContract.hpp"
@@ -29,6 +30,9 @@
 #include "../Contracts/Drivers/Devices/DriverContract.hpp"
 #include "../Contracts/Devices/DeviceContract.hpp"
 #include "../Contracts/Collections/CollectionContract.hpp"
+
+ /** Foundation/Logger */
+#include "../Foundation/Logger.hpp"
 
 /** Collections */
 #include "../Collections/Collection.hpp"
@@ -75,7 +79,6 @@ using Nugraha::Support::Facades::Scheduler::Scheduler;
 #include "../Devices/Device.hpp"
 
 /** Foundation */
-#include "../Foundation/Logger.hpp"
 #include "../Foundation/BoardKernel.hpp"
 #include "../Foundation/BaseController.hpp"
 #include "../Foundation/Application.hpp"

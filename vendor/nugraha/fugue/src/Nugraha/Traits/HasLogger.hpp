@@ -1,20 +1,20 @@
 namespace Nugraha { namespace Traits {
-using Nugraha::Contracts::Foundation::LoggerContract;
+using Nugraha::Foundation::Logger;
 
 class HasLogger
 {
 protected:
-    LoggerContract* logger = NULL;
+    Logger* logger = NULL;
 
 public:
     virtual ~HasLogger() {}
 
-    void setLogger(LoggerContract* logger)
+    void setLogger(Logger* logger)
     {
         this->logger = logger;
     }
 
-    LoggerContract* getLogger()
+    Logger* getLogger()
     {
         return this->logger;
     }

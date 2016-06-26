@@ -1,6 +1,7 @@
 namespace Nugraha { namespace Sensors {
 using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
+using Nugraha::Foundation::Logger;
 using Nugraha::Drivers::Sensors::Driver;
 using Nugraha::Traits::RecordableInstance;
 using Nugraha::Drivers::Sensors::GenericDriver;
@@ -27,9 +28,9 @@ public:
 
     int getId() override {HasId::getId();}
 
-    void setLogger(LoggerContract* logger) override {HasLogger::setLogger(logger);}
+    void setLogger(Logger* logger) override {HasLogger::setLogger(logger);}
     
-    LoggerContract* getLogger() override {HasLogger::getLogger();}
+    Logger* getLogger() override {HasLogger::getLogger();}
 };
 
 }}

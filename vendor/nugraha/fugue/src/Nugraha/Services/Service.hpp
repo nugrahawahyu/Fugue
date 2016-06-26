@@ -1,6 +1,7 @@
 namespace Nugraha { namespace Services {
 using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
+using Nugraha::Foundation::Logger;
 using Nugraha::Traits::RecordableInstance;
 using Nugraha::Contracts::Services::ServiceContract;
 using Nugraha::Contracts::Foundation::BoardContract;
@@ -14,13 +15,13 @@ protected:
 public:
     int getId() override {HasId::getId();}
     
-    void setLogger(LoggerContract* logger) override
+    void setLogger(Logger* logger) override
     {
         HasLogger::setLogger(logger);
         // addDelayToRecord(String(0));
     }
 
-    LoggerContract* getLogger()
+    Logger* getLogger()
     {
         return logger;
     }

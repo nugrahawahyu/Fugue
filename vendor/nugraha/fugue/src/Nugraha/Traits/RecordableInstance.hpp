@@ -25,6 +25,11 @@ public:
         }
         return NULL;
     }
+
+    static MyClass whereIndex(int index)
+    {
+        return myInstances[index];
+    }
 };
 template<class MyClass>
 std::vector<MyClass> RecordableInstance<MyClass>::myInstances = std::vector<MyClass>();

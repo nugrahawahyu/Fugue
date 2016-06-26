@@ -1,5 +1,5 @@
 namespace Nugraha { namespace Contracts { namespace Sensors {
-using Nugraha::Contracts::Foundation::LoggerContract;
+using Nugraha::Foundation::Logger;
 
 class SensorContract 
 {
@@ -12,8 +12,8 @@ public:
     virtual ~SensorContract() {}
     virtual int getId()=0;
     virtual double readMeasurementValue()=0;
-    virtual void setLogger(LoggerContract* logger)=0;
-    virtual LoggerContract* getLogger()=0;   
+    virtual void setLogger(Logger* logger)=0;
+    virtual Logger* getLogger()=0;   
 };
 
 }}}

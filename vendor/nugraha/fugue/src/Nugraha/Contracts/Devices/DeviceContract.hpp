@@ -1,5 +1,5 @@
 namespace Nugraha { namespace Contracts { namespace Devices {
-using Nugraha::Contracts::Foundation::LoggerContract;
+using Nugraha::Foundation::Logger;
 
 class DeviceContract 
 {
@@ -11,8 +11,8 @@ public:
     virtual void behavior()=0;
     virtual int getPin()=0;
     virtual int getId()=0;
-    virtual void setLogger(LoggerContract* logger)=0;
-    virtual LoggerContract* getLogger()=0;
+    virtual void setLogger(Logger* logger)=0;
+    virtual Logger* getLogger()=0;
 };
 
 }}}
