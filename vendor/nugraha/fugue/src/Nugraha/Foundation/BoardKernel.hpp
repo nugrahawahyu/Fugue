@@ -5,22 +5,21 @@ using Nugraha::Services::Service;
 using Nugraha::Traits::HasLogger;
 using Nugraha::Collections::Vector;
 using Nugraha::Contracts::Foundation::BoardContract;
-using Nugraha::Contracts::Collections::CollectionContract;
 
 class BoardKernel : public virtual BoardContract, public HasLogger
 {  
 protected:
-    CollectionContract<Device*>* devicesCollection;
-    CollectionContract<Sensor*>* sensorsCollection;
-    CollectionContract<Service*>* servicesCollection;
+    std::vector<Device*> devicesCollection;
+    std::vector<Sensor*> sensorsCollection;
+    std::vector<Service*> servicesCollection;
     Device* Default = NULL;
 
     void initializeAll()
     {
         /** Inisialisasi setiap Device. */
-        for(int i=0; i<devicesCollection->count(); i++) {
-            if(devicesCollection->getMemberAt(i) != NULL) {
-                devicesCollection->getMemberAt(i)->setLogger(logger);
+        for(int i=0; i<devicesCollection.size(); i++) {
+            if(devicesCollection[i] != NULL) {
+                devicesCollection[i]->setLogger(logger);
             }
         }
     }
@@ -28,9 +27,6 @@ protected:
 public:
     BoardKernel()
     {
-        devicesCollection = new Vector<Device*>();
-        sensorsCollection = new Vector<Sensor*>();
-        servicesCollection = new Vector<Service*>();
         setLogger(new Logger());
     }
 
@@ -46,35 +42,35 @@ public:
     void automate()
     {
         /** Jalankan behavior setiap Device. */
-        for(int i=0; i<devicesCollection->count(); i++) {
-            if(devicesCollection->getMemberAt(i) != NULL) {
-                devicesCollection->getMemberAt(i)->behavior();
+        for(int i=0; i<devicesCollection.size(); i++) {
+            if(devicesCollection[i] != NULL) {
+                devicesCollection[i]->behavior();
             }
         }
         
         /** Jalankan service setiap Gateway. */
-        for(int i=0; i<servicesCollection->count(); i++) {
-            if(servicesCollection->getMemberAt(i) != NULL) {
-                servicesCollection->getMemberAt(i)->service();
-                servicesCollection->getMemberAt(i)->setLogger(logger);
-                servicesCollection->getMemberAt(i)->setBoard(this);
+        for(int i=0; i<servicesCollection.size(); i++) {
+            if(servicesCollection[i] != NULL) {
+                servicesCollection[i]->service();
+                servicesCollection[i]->setLogger(logger);
+                servicesCollection[i]->setBoard(this);
             }
         }
     }
 
     void attachDevice(Device* device)
     {
-        devicesCollection->add(device);
+        devicesCollection.push_back(device);
     }
 
     void attachSensor(Sensor* sensor)
     {
-        sensorsCollection->add(sensor);
+        sensorsCollection.push_back(sensor);
     }
 
     void attachService(Service* gateway)
     {
-        servicesCollection->add(gateway);
+        servicesCollection.push_back(gateway);
     }
 
     void executeUserCommand(String userCommands)
@@ -107,12 +103,9 @@ public:
         }
     }
 
-    ~BoardKernel()
+    virtual ~BoardKernel()
     {
-        delete servicesCollection;
-        delete devicesCollection;
-        delete sensorsCollection;
-        delete logger;
+
     }
 };
 
