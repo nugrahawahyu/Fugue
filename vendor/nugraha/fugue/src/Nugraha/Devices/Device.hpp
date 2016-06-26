@@ -1,7 +1,6 @@
 namespace Nugraha { namespace Devices {
 using Nugraha::Traits::HasId;
 using Nugraha::Traits::HasLogger;
-using Nugraha::Support::Facades::Debug;
 using Nugraha::Traits::RecordableInstance;
 using Nugraha::Contracts::Sensors::SensorContract;
 using Nugraha::Contracts::Devices::DeviceContract;
