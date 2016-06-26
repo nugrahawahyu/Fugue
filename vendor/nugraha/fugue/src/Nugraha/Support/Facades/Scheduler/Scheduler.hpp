@@ -5,7 +5,7 @@ using Nugraha::Contracts::Collections::CollectionContract;
 class Scheduler
 {
 protected:
-    static CollectionContract<BaseEvent*>* eventCollection;
+    static std::vector<BaseEvent*> eventCollection;
     static bool init;
 
 public:
@@ -20,12 +20,12 @@ public:
             init = false;
         }
 
-        for(auto event = eventCollection->getMembers().begin(); event != eventCollection->getMembers().end();) {
+        for(auto event = eventCollection.begin(); event != eventCollection.end();) {
             (*event)->update(millis());
             if((*event)->getRepeatCount() == 0) {
                 delete *event;
                 *event = NULL;
-                event = eventCollection->getMembers().erase(event);
+                event = eventCollection.erase(event);
             } else {
                 ++event;
             }
@@ -42,7 +42,7 @@ public:
     template<typename Callback>
     static void every(unsigned long interval, Callback callback, int repeatCount = -1)
     {
-        eventCollection->add(new StaticEvent<Callback>(interval, callback, repeatCount));
+        eventCollection.push_back(new StaticEvent<Callback>(interval, callback, repeatCount));
     }
 
     /**
@@ -56,7 +56,7 @@ public:
     template<typename Callback, typename ObjectType>
     static void every(unsigned long interval, ObjectType object, Callback callback, int repeatCount = -1)
     {
-        eventCollection->add(new Event<Callback, ObjectType>(interval, callback, object, repeatCount));
+        eventCollection.push_back(new Event<Callback, ObjectType>(interval, callback, object, repeatCount));
     }
 
     /**
@@ -71,11 +71,11 @@ public:
 
     static BaseEvent* getEventAt(int index)
     {
-        return eventCollection->getMemberAt(index);
+        return eventCollection[index];
     }
 };
 
-CollectionContract<BaseEvent*>* Scheduler::eventCollection = new Collection<BaseEvent*>();
+std::vector<BaseEvent*> Scheduler::eventCollection = std::vector<BaseEvent*>();
 bool Scheduler::init = true;
 
 }}}}
