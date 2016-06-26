@@ -13,6 +13,7 @@ protected:
     std::vector<Sensor*> sensorsCollection;
     std::vector<Service*> servicesCollection;
     Device* Default = NULL;
+    bool isStarted = false;
 
     void initializeAll()
     {
@@ -22,21 +23,6 @@ protected:
                 devicesCollection[i]->setLogger(logger);
             }
         }
-    }
-    
-public:
-    BoardKernel()
-    {
-        setLogger(new Logger());
-    }
-
-    void initialize()
-    {
-        sensors();
-        devices();
-        services();
-        initializeAll();
-        automate();
     }
 
     void automate()
@@ -55,6 +41,24 @@ public:
                 servicesCollection[i]->setLogger(logger);
                 servicesCollection[i]->setBoard(this);
             }
+        }
+    }
+
+public:
+    BoardKernel()
+    {
+        setLogger(new Logger());
+    }
+
+    void initialize()
+    {
+        if(!isStarted) {
+            sensors();
+            devices();
+            services();
+            initializeAll();
+            automate();
+            isStarted = true;
         }
     }
 
