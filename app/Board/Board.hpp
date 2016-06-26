@@ -11,6 +11,7 @@ protected:
 
     void services()
     {
+        this->attachService(new TemperatureLogger());
         this->attachService(new PersistentHttp(std::map<String, String>({
             { "host"         , env::httpClient::host },
             { "mode"         , env::httpClient::mode },
@@ -34,7 +35,7 @@ protected:
 
     void sensors()
     {
-
+        // this->attachSensor(new Ds18B20(D7));
     }
 };
 
