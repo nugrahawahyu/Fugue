@@ -1,6 +1,7 @@
 namespace App { namespace Boards { 
 using namespace App::Devices;
 using namespace App::Sensors;
+using namespace App::Services;
 using Nugraha::Foundation::BoardKernel;
 using App::Services::WebServer::Server;
 using namespace App::Services::HttpClients;
