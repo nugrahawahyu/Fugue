@@ -12,6 +12,9 @@
 #include <vector>
 #include <map>
 
+/** Third-party libraries */
+#include "OneWire.h"
+
 /** env */
 #include "config/env.hpp"
 
