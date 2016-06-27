@@ -35,7 +35,7 @@ protected:
 
     void sensors()
     {
-        // this->attachSensor(new Ds18B20(D7));
+        this->attachSensor(new Ds18B20(2));
     }
 };
 
