@@ -7,6 +7,6 @@
 #include "milesburton/DallasTemperature/DallasTemperature.cpp"
 #include "bblanchon/ArduinoJson/ArduinoJson.h"
 #include "bblanchon/ArduinoJson/ArduinoJson.cpp"
-#include "nugraha/fugue/tugasAkhirWahyu.h"
+#include "nugraha/fugue/fugue.h"
 
 #endif
