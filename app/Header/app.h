@@ -1,5 +1,6 @@
 /** Sensors */
 #include "../Sensors/PirSensor.hpp"
+#include "../Sensors/Ds18B20.hpp"
 
 /** Devices */
 #include "../Devices/Lampu.hpp"
