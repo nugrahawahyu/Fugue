@@ -19,7 +19,7 @@ public:
     void updateTemperature()
     {
         temperature = Sensor::whereIndex(0)->readMeasurementValue();
-        logger->addRecord("Measurement", "sensor", "DS18B20 Temperature Sensor", "value", temperature);
+        logger->addRecord("Measurement", "sensor", "DS18B20TemperatureSensor", "value", temperature);
     }
 };
 
