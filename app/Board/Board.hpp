@@ -29,8 +29,8 @@ protected:
         this->attachDevice(new Lampu(D3));
         this->attachDevice(new Lampu(D4));
         this->attachDevice(new Lampu(D5));
-        this->attachDevice(new AirConditioner(D6));
-        this->attachDevice(new Led(BUILTIN_LED, new PirSensor(D7)));
+        this->attachDevice(new AirConditioner(D8));
+        this->attachDevice(new Led(BUILTIN_LED));
     }
 
     void sensors()
