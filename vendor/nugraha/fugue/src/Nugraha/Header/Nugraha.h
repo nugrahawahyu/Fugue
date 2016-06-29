@@ -16,13 +16,11 @@
  * ---------------------------------------------------------------|
  */
 
-/** Globals */
-#include "../Support/helpers/Scheduler.hpp"
-
 /** Contracts */
  namespace Nugraha{namespace Foundation{class Logger;}}
 #include "../Contracts/Foundation/LoggerContract.hpp"
 #include "../Contracts/Support/Facades/Scheduler/EventContract.hpp"
+#include "../Contracts/Support/Facades/Scheduler/TimeContract.hpp"
 #include "../Contracts/Foundation/BoardContract.hpp"
 #include "../Contracts/Services/ServiceContract.hpp"
 #include "../Contracts/Drivers/Sensors/DriverContract.hpp"
@@ -47,6 +45,10 @@
 /** Support/Facades */
 #include "../Support/Facades/Debug.hpp"
 #include "../Support/Facades/Fluid.hpp"
+#include "../Support/Facades/Scheduler/DueTimeManager.hpp"
+#include "../Support/Facades/Scheduler/RtcTime.hpp"
+#include "../Support/Facades/Scheduler/MillisTime.hpp"
+#include "../Support/helpers/Scheduler.hpp"
 #include "../Support/Facades/Scheduler/BaseEvent.hpp"
 #include "../Support/Facades/Scheduler/Event.hpp"
 #include "../Support/Facades/Scheduler/StaticEvent.hpp"

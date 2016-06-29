@@ -11,9 +11,11 @@
 #include <ESP8266mDNS.h>
 #include <vector>
 #include <map>
+#include <Wire.h>
 
 /** Third-party libraries */
 #include "OneWire.h"
+#include "RTClib.h"
 
 /** env */
 #include "config/env.hpp"

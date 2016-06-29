@@ -5,28 +5,22 @@ using Nugraha::Traits::HasId;
 class BaseEvent : public virtual EventContract, public virtual HasId<int>
 {
 protected:
-    unsigned long schedule;
-    unsigned long previousMillis;
     int repeatCount = -1;
+    DueTimeManager* schedule;
 
 public:
-    BaseEvent(unsigned long schedule, int repeatCount)
+    BaseEvent(DueTimeManager* schedule, int repeatCount)
     {
-        this->previousMillis = millis();
-        this->schedule = schedule;
         this->repeatCount = repeatCount;
+        this->schedule = schedule;
     }
 
-    virtual ~BaseEvent()
-    {
-        
-    }
+    virtual ~BaseEvent(){}
 
     int executionCount = 0;
-    void update(unsigned long now)
+    void update()
     {
-        if(now - previousMillis >= schedule && (repeatCount == -1 || repeatCount > 0)) {
-            previousMillis = now;
+        if(schedule->isDueTime() && (repeatCount == -1 || repeatCount > 0)) {
             Serial.printf("[%d] ", this->id);
             executeCallback();
             if(repeatCount != -1) {

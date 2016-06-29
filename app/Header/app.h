@@ -1,3 +1,5 @@
+using namespace Nugraha::Support::Facades::Scheduler;
+
 /** Sensors */
 #include "../Sensors/PirSensor.hpp"
 #include "../Sensors/Ds18B20.hpp"
@@ -10,9 +12,7 @@
 #include "../Devices/AirConditioner.hpp"
 
 /** Services */
-#include "../Services/HTTPClients/PersistentHttp.hpp"
-#include "../Services/HTTPClients/NonPersistentHttp.hpp"
-#include "../Services/WebServer/Server.hpp"
+#include "../Services/HttpClient.hpp"
 #include "../Services/TemperatureLogger.hpp"
 
 /** Boards */

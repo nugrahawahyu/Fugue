@@ -3,8 +3,6 @@ using namespace App::Devices;
 using namespace App::Sensors;
 using namespace App::Services;
 using Nugraha::Foundation::BoardKernel;
-using App::Services::WebServer::Server;
-using namespace App::Services::HttpClients;
                 
 class Board : public virtual BoardKernel {
 protected:
@@ -12,7 +10,7 @@ protected:
     void services()
     {
         this->attachService(new TemperatureLogger());
-        this->attachService(new PersistentHttp(std::map<String, String>({
+        this->attachService(new HttpClient(std::map<String, String>({
             { "host"         , env::httpClient::host },
             { "mode"         , env::httpClient::mode },
             { "publishKey"   , env::httpClient::publishKey },
@@ -20,7 +18,7 @@ protected:
             { "signature"    , env::httpClient::signature },
             { "channelName"  , env::httpClient::channelName },
             { "callback"     , env::httpClient::callback }
-        })));
+        }), true));
     }
 
     void devices()

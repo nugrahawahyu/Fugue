@@ -7,7 +7,7 @@ protected:
     Callback callback;
     
 public:
-    StaticEvent(unsigned long interval, Callback callback, int repeatCount) : BaseEvent(interval, repeatCount), callback(callback)
+    StaticEvent(DueTimeManager* schedule, Callback callback, int repeatCount) : BaseEvent(schedule, repeatCount), callback(callback)
     {
         
     }

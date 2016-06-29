@@ -6,7 +6,7 @@ class Scheduler
 {
 protected:
     static std::vector<BaseEvent*> eventCollection;
-    static bool init;
+    static bool isFirstRun;
 
 public:
     /**
@@ -15,17 +15,21 @@ public:
      */
     static void handleEvents()
     {
-        if(init) {
+        if(isFirstRun) {
             after(1, [=](){Serial.println();});
-            init = false;
+            isFirstRun = false;
         }
 
         for(auto event = eventCollection.begin(); event != eventCollection.end();) {
-            (*event)->update(millis());
+            // Serial.printf("updating %d\n", (*event)->getId());
+            (*event)->update();
+            // Serial.printf("selesai updating %d\n", (*event)->getId());
             if((*event)->getRepeatCount() == 0) {
+                // Serial.printf("deleteing %d\n", (*event)->getId());
                 delete *event;
                 *event = NULL;
                 event = eventCollection.erase(event);
+                // Serial.printf("selesai mendelete %d\n", (*event)->getId());
             } else {
                 ++event;
             }
@@ -40,9 +44,15 @@ public:
      * @param callback reference - reference fungsi static.
      */
     template<typename Callback>
-    static void every(unsigned long interval, Callback callback, int repeatCount = -1)
+    static void every(unsigned long schedule, Callback callback, int repeatCount = -1)
     {
-        eventCollection.push_back(new StaticEvent<Callback>(interval, callback, repeatCount));
+        eventCollection.push_back(new StaticEvent<Callback>(Millis(schedule), callback, repeatCount));
+    }
+
+    template<typename Callback>
+    static void every(DueTimeManager* schedule, Callback callback, int repeatCount = -1)
+    {
+        eventCollection.push_back(new StaticEvent<Callback>(schedule, callback, repeatCount));
     }
 
     /**
@@ -54,9 +64,15 @@ public:
      * @param reference callback - reference fungsi static.
      */
     template<typename Callback, typename ObjectType>
-    static void every(unsigned long interval, ObjectType object, Callback callback, int repeatCount = -1)
+    static void every(unsigned long schedule, ObjectType object, Callback callback, int repeatCount = -1)
     {
-        eventCollection.push_back(new Event<Callback, ObjectType>(interval, callback, object, repeatCount));
+        eventCollection.push_back(new Event<Callback, ObjectType>(new MillisTime(schedule), callback, object, repeatCount));
+    }
+
+    template<typename Callback, typename ObjectType>
+    static void every(DueTimeManager* schedule, ObjectType object, Callback callback, int repeatCount = -1)
+    {
+        eventCollection.push_back(new Event<Callback, ObjectType>(schedule, callback, object, repeatCount));
     }
 
     /**
@@ -76,6 +92,6 @@ public:
 };
 
 std::vector<BaseEvent*> Scheduler::eventCollection = std::vector<BaseEvent*>();
-bool Scheduler::init = true;
+bool Scheduler::isFirstRun = true;
 
 }}}}
