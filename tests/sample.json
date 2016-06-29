@@ -1,0 +1,44 @@
+{
+    "count" : 3,
+    "data" : [
+        {
+            "type" : "Notification",
+            "contents" : [
+                {
+                    "keName"  : "pin",
+                    "key"  : "1",
+                    "valueName"  : "state",
+                    "value" : true
+                },
+                {
+                    "keName"  : "pin",
+                    "key"  : "2",
+                    "valueName"  : "state",
+                    "value" : false
+                }
+            ]
+        },
+        {
+            "type" : "ConnectionInfo",
+            "contents" : [
+                {
+                    "keName"  : "parameter",
+                    "key"  : "delay",
+                    "valueName"  : "value",
+                    "value" : 94
+                }
+            ]
+        },
+        {
+            "type" : "Measurement",
+            "contents" : [
+                {
+                    "keName"  : "sensor",
+                    "key"  : "suhu",
+                    "valueName"  : "value",
+                    "value" : 94
+                }
+            ]
+        }
+    ]
+}
