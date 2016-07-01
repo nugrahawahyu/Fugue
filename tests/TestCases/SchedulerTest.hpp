@@ -12,6 +12,7 @@ public:
 
         Scheduler::every((500), [=]() {
             ayam();
+            // Serial.println("IKE DEYEN HAAAAA.........");
         });
     }
 
@@ -23,7 +24,7 @@ public:
     void ayam()
     {
         Serial.println("register new event.");
-        Scheduler::after(500, [](){
+        Scheduler::after(499, [](){
             Serial.println("hallo");
         });
     }
