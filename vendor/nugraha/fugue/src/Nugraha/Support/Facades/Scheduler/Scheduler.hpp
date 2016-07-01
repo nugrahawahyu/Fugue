@@ -21,15 +21,11 @@ public:
         }
 
         for(auto event = eventCollection.begin(); event != eventCollection.end();) {
-            // Serial.printf("updating %d\n", (*event)->getId());
             (*event)->update();
-            // Serial.printf("selesai updating %d\n", (*event)->getId());
             if((*event)->getRepeatCount() == 0) {
-                // Serial.printf("deleteing %d\n", (*event)->getId());
                 delete *event;
                 *event = NULL;
                 event = eventCollection.erase(event);
-                // Serial.printf("selesai mendelete %d\n", (*event)->getId());
             } else {
                 ++event;
             }
