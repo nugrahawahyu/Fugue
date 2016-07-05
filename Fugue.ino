@@ -1,9 +1,10 @@
 /**
- * Fugue - A Wemos D1 framework.
+ * Fugue - IoT platform
  *
  * @package Nugraha
  * @Author  Wahyu Nugraha <nugraha.c.wahyu@gmail.com>
  */
+
 #include "Fugue.h"
 
 namespace Main {
